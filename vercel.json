@@ -1,0 +1,9 @@
+{
+    "name": "msaad-chemeng",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
