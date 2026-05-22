@@ -164,74 +164,25 @@ const useRevealOnScroll = () => {
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
   { label: 'AI Models', href: '#ai-models' },
-  { label: 'Journey', href: '#timeline' },
   { label: 'Space', href: '#space' },
-  { label: 'Community', href: '#socials' },
+  { label: 'Communities', href: '#communities' },
+  { label: 'Socials', href: '#socials' },
   { label: 'Contact', href: '#contact' },
 ];
 
-const SKILLS = [
-  {
-    icon: '⚙️',
-    title: 'Engineering',
-    tags: ['Process Design', 'Thermodynamics', 'Fluid Mechanics', 'Heat Transfer', 'MATLAB', 'Mass Transfer'],
-  },
-  {
-    icon: '🚀',
-    title: 'Space Sciences',
-    tags: ['Propulsion Systems', 'Orbital Mechanics', 'Astrobiology', 'Rocket Engineering', 'Space Habitats'],
-  },
-  {
-    icon: '🤖',
-    title: 'Tech & AI',
-    tags: ['Python', 'AI / ML', 'Data Analysis', 'Automation', 'Web Development'],
-  },
-  {
-    icon: '🌐',
-    title: 'Community',
-    tags: ['Content Creation', 'Leadership', 'Networking', 'Public Speaking', 'Mentoring'],
-  },
-];
-
-const TIMELINE = [
-  {
-    date: 'Present',
-    title: 'Launched saadengineer.works',
-    desc: 'Built a premium personal portfolio to showcase my work, communities, and vision for the future of engineering.',
-  },
-  {
-    date: '2025',
-    title: 'AI-Automated Content Delivery',
-    desc: 'Developed a fully automated system delivering daily process engineering content, academic resources, and industry updates via WhatsApp.',
-  },
-  {
-    date: '2024',
-    title: 'Space Sciences Channel',
-    desc: 'Launched a dedicated WhatsApp channel exploring propulsion technologies, orbital mechanics, and extraterrestrial habitats.',
-  },
-  {
-    date: '2023',
-    title: 'Engineering Community Founded',
-    desc: 'Created a vibrant WhatsApp group connecting chemical engineering students, researchers, and industry professionals worldwide.',
-  },
-  {
-    date: '2022',
-    title: 'B.Sc Chemical Engineering',
-    desc: 'Began my journey in Chemical Engineering, driven by a passion for process design, innovation, and space sciences.',
-  },
-];
-
-const COMMUNITIES = [
+const COMMUNITY_GROUPS = [
   {
     href: 'https://chat.whatsapp.com/FdnHn7jIZyZBQ2Yy8TFouI?mode=gi_t',
     icon: <WhatsAppIcon />,
-    title: 'Engineering Group',
+    title: 'Engineering Community',
     desc: 'An AI-powered WhatsApp group with fully automated daily posts — delivering process engineering content, academic resources, and industry updates.',
-    linkText: 'Join WhatsApp →',
+    linkText: 'Join WhatsApp Group →',
     glowClass: 'wa-glow',
-  },
+  }
+];
+
+const SOCIAL_LINKS = [
   {
     href: 'https://www.facebook.com/share/189N5ahB5J/',
     icon: <FacebookIcon />,
@@ -429,29 +380,6 @@ function App() {
         </div>
       </section>
 
-      {/* ─── Skills Section ─── */}
-      <section className="section" id="skills">
-        <div className="container">
-          <h2 className="section-title reveal">Skills & Expertise</h2>
-          <p className="section-subtitle reveal">What I bring to the table</p>
-          <div className="section-divider reveal" />
-
-          <div className="skills-categories reveal-stagger">
-            {SKILLS.map(cat => (
-              <div className="skill-category" key={cat.title}>
-                <div className="skill-category-icon">{cat.icon}</div>
-                <h3 className="skill-category-title">{cat.title}</h3>
-                <div className="skill-tags">
-                  {cat.tags.map(tag => (
-                    <span className="skill-tag" key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── AI Models Section ─── */}
       <section className="section" id="ai-models">
         <div className="container">
@@ -461,63 +389,17 @@ function App() {
 
           <div className="social-grid reveal-stagger">
             <a
-              href="https://huggingface.co/ali12345672344/chem-blender-r1d14b-v4qa-2026-04-25"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-card hover-lift hf-glow"
-            >
-              <div className="social-icon"><HuggingFaceIcon /></div>
-              <h3>ChemBlender QA Model</h3>
-              <p>A fine-tuned language model specialized in chemical engineering question-answering. Built on R1D14B architecture with domain-specific training data.</p>
-              <span className="join-link">View on HuggingFace →</span>
-            </a>
-
-            <a
               href="https://huggingface.co/ali12345672344"
               target="_blank"
               rel="noopener noreferrer"
               className="social-card hover-lift hf-glow"
+              style={{ gridColumn: '1 / -1', maxWidth: '600px', margin: '0 auto' }}
             >
               <div className="social-icon"><HuggingFaceIcon /></div>
-              <h3>ChemEng Dataset</h3>
-              <p>A curated chemical engineering dataset with 47+ downloads, designed for training domain-specific AI models in process engineering and thermodynamics.</p>
-              <span className="join-link">Explore Dataset →</span>
+              <h3>My Hugging Face Profile</h3>
+              <p>Explore my fine-tuned language models specialized in chemical engineering question-answering and curated datasets built on R1D14B architecture with domain-specific training data.</p>
+              <span className="join-link">View Profile →</span>
             </a>
-
-            <a
-              href="https://huggingface.co/ali12345672344"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-card hover-lift hf-glow"
-            >
-              <div className="social-icon"><HuggingFaceIcon /></div>
-              <h3>More Models Coming</h3>
-              <p>Continuously training and deploying new AI models tailored for chemical engineering applications — from process optimization to safety analysis.</p>
-              <span className="join-link">Follow on HuggingFace →</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Timeline Section ─── */}
-      <section className="section" id="timeline">
-        <div className="container">
-          <h2 className="section-title reveal">My Journey</h2>
-          <p className="section-subtitle reveal">Milestones that shaped who I am</p>
-          <div className="section-divider reveal" />
-
-          <div className="timeline-container">
-            <div className="timeline-line" />
-            {TIMELINE.map((item, i) => (
-              <div className="timeline-item reveal" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className="timeline-dot" />
-                <div className="timeline-content">
-                  <div className="timeline-date">{item.date}</div>
-                  <h3 className="timeline-title">{item.title}</h3>
-                  <p className="timeline-desc">{item.desc}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -563,14 +445,41 @@ function App() {
       </section>
 
       {/* ─── Communities Section ─── */}
-      <section className="section" id="socials">
+      <section className="section" id="communities">
         <div className="container">
           <h2 className="section-title reveal">My Communities</h2>
           <p className="section-subtitle reveal">Join the network and let's grow together</p>
           <div className="section-divider reveal" />
 
           <div className="social-grid reveal-stagger">
-            {COMMUNITIES.map(c => (
+            {COMMUNITY_GROUPS.map(c => (
+              <a
+                key={c.title}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`social-card hover-lift ${c.glowClass}`}
+                style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1' }}
+              >
+                <div className="social-icon">{c.icon}</div>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+                <span className="join-link">{c.linkText}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Socials Section ─── */}
+      <section className="section" id="socials">
+        <div className="container">
+          <h2 className="section-title reveal">Connect With Me</h2>
+          <p className="section-subtitle reveal">Follow my journey across social platforms</p>
+          <div className="section-divider reveal" />
+
+          <div className="social-grid reveal-stagger">
+            {SOCIAL_LINKS.map(c => (
               <a
                 key={c.title}
                 href={c.href}
@@ -607,7 +516,7 @@ function App() {
             <div className="contact-divider" />
             <div className="contact-socials-label">Find me on</div>
             <div className="contact-socials">
-              <a href="https://chat.whatsapp.com/FdnHn7jIZyZBQ2Yy8TFouI?mode=gi_t" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="WhatsApp">
+              <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="WhatsApp">
                 <WhatsAppIcon />
               </a>
               <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="Facebook">
@@ -640,11 +549,7 @@ function App() {
               ))}
             </div>
 
-            <div className="footer-social-links">
-              <a href="https://chat.whatsapp.com/FdnHn7jIZyZBQ2Yy8TFouI?mode=gi_t" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
-              <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FacebookIcon /></a>
-              <a href="https://x.com/Cheme1569231" target="_blank" rel="noopener noreferrer" aria-label="X"><XIcon /></a>
-              <a href="https://www.instagram.com/i_m_arsonist?igsh=OGdiOW11a3J5bGlq" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon /></a>
+            <div className="footer-social-links" style={{ display: 'none' }}>
             </div>
           </div>
 
