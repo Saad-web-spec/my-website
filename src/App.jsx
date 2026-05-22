@@ -356,7 +356,7 @@ function App() {
               </p>
               <p>
                 Beyond my technical work, I'm deeply passionate about <span className="about-highlight">Space
-                Sciences</span> and community building. Through my platforms, I've connected 500+ students,
+                Sciences</span> and community building. Through my platforms, I've connected students,
                 researchers, and professionals who share knowledge, challenge conventional thinking,
                 and push the boundaries of what's possible in engineering and beyond.
               </p>
@@ -428,21 +428,6 @@ function App() {
               chemical engineering meets interstellar ambition — from propulsion technologies
               and life support systems to extraterrestrial habitats and beyond.
             </p>
-
-            <div className="space-stats">
-              <div className="space-stat">
-                <div className="stat-number">∞</div>
-                <div className="stat-label">Possibilities</div>
-              </div>
-              <div className="space-stat">
-                <div className="stat-number">Daily</div>
-                <div className="stat-label">Space Updates</div>
-              </div>
-              <div className="space-stat">
-                <div className="stat-number">1</div>
-                <div className="stat-label">Shared Dream</div>
-              </div>
-            </div>
 
             <a
               href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
