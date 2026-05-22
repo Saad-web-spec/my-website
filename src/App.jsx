@@ -165,8 +165,8 @@ const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'AI Models', href: '#ai-models' },
-  { label: 'Space', href: '#space' },
   { label: 'Communities', href: '#communities' },
+  { label: 'Space', href: '#space' },
   { label: 'Socials', href: '#socials' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -361,21 +361,6 @@ function App() {
                 and push the boundaries of what's possible in engineering and beyond.
               </p>
             </div>
-
-            <div className="about-stats-row reveal-right">
-              <div className="stat-card">
-                <div className="stat-number">500+</div>
-                <div className="stat-label">Community Members</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number">5+</div>
-                <div className="stat-label">Active Platforms</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number">Daily</div>
-                <div className="stat-label">AI-Curated Content</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -404,13 +389,40 @@ function App() {
         </div>
       </section>
 
+      {/* ─── Communities Section ─── */}
+      <section className="section" id="communities">
+        <div className="container">
+          <h2 className="section-title reveal">My Communities</h2>
+          <p className="section-subtitle reveal">Join the network and let's grow together</p>
+          <div className="section-divider reveal" />
+
+          <div className="social-grid reveal-stagger">
+            {COMMUNITY_GROUPS.map(c => (
+              <a
+                key={c.title}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`social-card hover-lift ${c.glowClass}`}
+                style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1' }}
+              >
+                <div className="social-icon">{c.icon}</div>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+                <span className="join-link">{c.linkText}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Space Section ─── */}
       <section className="space-section" id="space">
         <StarField />
         <div className="container">
           <div className="space-card reveal">
             <div className="space-icon">🚀</div>
-            <h2>Towards The Cosmos</h2>
+            <h2>Towards The Space</h2>
             <p>
               Process engineering doesn't stop at Earth's atmosphere. Explore a world where
               chemical engineering meets interstellar ambition — from propulsion technologies
@@ -438,35 +450,8 @@ function App() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Explore the Cosmos
+              Explore Space
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Communities Section ─── */}
-      <section className="section" id="communities">
-        <div className="container">
-          <h2 className="section-title reveal">My Communities</h2>
-          <p className="section-subtitle reveal">Join the network and let's grow together</p>
-          <div className="section-divider reveal" />
-
-          <div className="social-grid reveal-stagger">
-            {COMMUNITY_GROUPS.map(c => (
-              <a
-                key={c.title}
-                href={c.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`social-card hover-lift ${c.glowClass}`}
-                style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1' }}
-              >
-                <div className="social-icon">{c.icon}</div>
-                <h3>{c.title}</h3>
-                <p>{c.desc}</p>
-                <span className="join-link">{c.linkText}</span>
-              </a>
-            ))}
           </div>
         </div>
       </section>
