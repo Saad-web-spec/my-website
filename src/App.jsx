@@ -32,6 +32,10 @@ const ArrowUpIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
 );
 
+const HuggingFaceIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 5.5a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM8.5 9.5c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5S7 11.828 7 11s.672-1.5 1.5-1.5zm7 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5S14 11.828 14 11s.672-1.5 1.5-1.5zM12 17.5c-2.33 0-4.3-1.46-5.11-3.5h10.22c-.81 2.04-2.78 3.5-5.11 3.5z"/></svg>
+);
+
 /* ═══════════════════════════════════════════════════
    TYPEWRITER COMPONENT
    ═══════════════════════════════════════════════════ */
@@ -161,6 +165,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'AI Models', href: '#ai-models' },
   { label: 'Journey', href: '#timeline' },
   { label: 'Space', href: '#space' },
   { label: 'Community', href: '#socials' },
@@ -349,6 +354,7 @@ function App() {
                 'Space Enthusiast.',
                 'Community Builder.',
                 'AI Explorer.',
+                'AI Model Builder.',
               ]} />
             </div>
 
@@ -387,20 +393,21 @@ function App() {
             <div className="about-text reveal-left">
               <p>
                 I'm a passionate <span className="about-highlight">B.Sc Chemical Engineering</span> student
-                on a mission to bridge the gap between traditional process engineering and the cutting-edge
-                frontiers of <span className="about-highlight">Space Science</span> and{' '}
-                <span className="about-highlight">Artificial Intelligence</span>.
+                with a singular purpose: to <span className="about-highlight">integrate Artificial Intelligence
+                with Chemical Engineering</span>. I believe AI will revolutionize how we design processes,
+                optimize reactions, and solve the most complex industrial challenges of our time.
               </p>
               <p>
-                I believe that the future of engineering lies at the intersection of disciplines — where
-                thermodynamics meets rocket propulsion, where AI optimizes chemical processes, and where
-                collaboration accelerates innovation beyond what any individual could achieve alone.
+                As a current chemical engineering student, I'm not just learning — I'm building.
+                I've fine-tuned and deployed <span className="about-highlight">3 custom AI models</span> on
+                Hugging Face, trained specifically on chemical engineering data. From automated Q&A systems
+                to domain-specific language models, I'm proving that AI and ChemE belong together.
               </p>
               <p>
-                Through my platforms, I've built communities of students, researchers, and industry
-                professionals who share knowledge, challenge conventional thinking, and push the boundaries
-                of what's possible. Every day, I curate and deliver content that inspires the next generation
-                of engineers to think bigger, aim higher, and never stop learning.
+                Beyond my technical work, I'm deeply passionate about <span className="about-highlight">Space
+                Sciences</span> and community building. Through my platforms, I've connected 500+ students,
+                researchers, and professionals who share knowledge, challenge conventional thinking,
+                and push the boundaries of what's possible in engineering and beyond.
               </p>
             </div>
 
@@ -410,7 +417,7 @@ function App() {
                 <div className="stat-label">Community Members</div>
               </div>
               <div className="stat-card">
-                <div className="stat-number">4+</div>
+                <div className="stat-number">5+</div>
                 <div className="stat-label">Active Platforms</div>
               </div>
               <div className="stat-card">
@@ -441,6 +448,53 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── AI Models Section ─── */}
+      <section className="section" id="ai-models">
+        <div className="container">
+          <h2 className="section-title reveal">AI Models on Hugging Face</h2>
+          <p className="section-subtitle reveal">Custom fine-tuned models bridging AI and Chemical Engineering</p>
+          <div className="section-divider reveal" />
+
+          <div className="social-grid reveal-stagger">
+            <a
+              href="https://huggingface.co/ali12345672344/chem-blender-r1d14b-v4qa-2026-04-25"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-card hover-lift hf-glow"
+            >
+              <div className="social-icon"><HuggingFaceIcon /></div>
+              <h3>ChemBlender QA Model</h3>
+              <p>A fine-tuned language model specialized in chemical engineering question-answering. Built on R1D14B architecture with domain-specific training data.</p>
+              <span className="join-link">View on HuggingFace →</span>
+            </a>
+
+            <a
+              href="https://huggingface.co/ali12345672344"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-card hover-lift hf-glow"
+            >
+              <div className="social-icon"><HuggingFaceIcon /></div>
+              <h3>ChemEng Dataset</h3>
+              <p>A curated chemical engineering dataset with 47+ downloads, designed for training domain-specific AI models in process engineering and thermodynamics.</p>
+              <span className="join-link">Explore Dataset →</span>
+            </a>
+
+            <a
+              href="https://huggingface.co/ali12345672344"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-card hover-lift hf-glow"
+            >
+              <div className="social-icon"><HuggingFaceIcon /></div>
+              <h3>More Models Coming</h3>
+              <p>Continuously training and deploying new AI models tailored for chemical engineering applications — from process optimization to safety analysis.</p>
+              <span className="join-link">Follow on HuggingFace →</span>
+            </a>
           </div>
         </div>
       </section>
