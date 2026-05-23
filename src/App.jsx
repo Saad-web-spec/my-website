@@ -207,6 +207,14 @@ const COMMUNITY_GROUPS = [
     desc: 'A WhatsApp group for chemical engineering students and professionals to share resources, discuss ideas, and grow together.',
     linkText: 'Join WhatsApp Group →',
     glowClass: 'wa-glow',
+  },
+  {
+    href: 'https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z',
+    icon: <WhatsAppIcon />,
+    title: 'Towards The Cosmos',
+    desc: 'Explore a world where chemical engineering meets interstellar ambition — space updates, propulsion, and extraterrestrial habitats.',
+    linkText: 'Explore the Cosmos →',
+    glowClass: 'wa-glow',
   }
 ];
 
@@ -503,33 +511,6 @@ function App() {
         </div>
       </section>
 
-      {/* ─── Space Section ─── */}
-      <section className="space-section" id="space">
-        <StarField />
-        <div className="container">
-          <div className="space-card reveal" data-aos="fade-up">
-            <div className="space-icon">🚀</div>
-            <h2>Towards The Cosmos</h2>
-            <p>
-              Process engineering doesn't stop at Earth's atmosphere. Explore a world where
-              chemical engineering meets interstellar ambition — from propulsion technologies
-              and life support systems to extraterrestrial habitats and beyond.
-            </p>
-
-
-
-            <a
-              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Explore the Cosmos
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Communities Section ─── */}
       <section className="section" id="communities">
         <div className="container">
@@ -709,20 +690,6 @@ function App() {
               <a href="#hero" className="footer-logo" onClick={e => handleNavClick(e, '#hero')}>
                 <img src="/logo.svg" alt="SAAD" />
               </a>
-              <div className="footer-social-links">
-                <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                  <WhatsAppIcon />
-                </a>
-                <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <FacebookIcon />
-                </a>
-                <a href="https://x.com/Cheme1569231" target="_blank" rel="noopener noreferrer" aria-label="X">
-                  <XIcon />
-                </a>
-                <a href="https://www.instagram.com/i_m_arsonist?igsh=OGdiOW11a3J5bGlq" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <InstagramIcon />
-                </a>
-              </div>
             </div>
 
             <div className="footer-nav">
