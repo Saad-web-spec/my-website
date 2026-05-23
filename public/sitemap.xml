@@ -16,13 +16,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- AI Models Section -->
-  <url>
-    <loc>https://saadengineer.works/#ai-models</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
 
   <!-- Projects Section -->
   <url>

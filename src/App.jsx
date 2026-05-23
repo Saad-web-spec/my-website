@@ -192,7 +192,6 @@ const useRevealOnScroll = () => {
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'AI Models', href: '#ai-models' },
   { label: 'Projects', href: '#projects' },
   { label: 'Space', href: '#space' },
   { label: 'Communities', href: '#communities' },
@@ -336,7 +335,7 @@ function App() {
 
     setFormStatus('sending');
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/xpqnlwra', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(formData),
@@ -470,30 +469,7 @@ function App() {
         </div>
       </section>
 
-      {/* ─── AI Models Section ─── */}
-      <section className="section" id="ai-models">
-        <div className="container">
-          <h2 className="section-title reveal" data-aos="fade-up">AI Models on Hugging Face</h2>
-          <p className="section-subtitle reveal" data-aos="fade-up">Custom fine-tuned models bridging AI and Chemical Engineering</p>
-          <div className="section-divider reveal" data-aos="fade-up" />
 
-          <div className="social-grid reveal-stagger">
-            <a
-              href="https://huggingface.co/ali12345672344"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-card hover-lift hf-glow"
-              style={{ gridColumn: '1 / -1', maxWidth: '600px', margin: '0 auto' }}
-              data-aos="fade-up"
-            >
-              <div className="social-icon"><HuggingFaceIcon /></div>
-              <h3>My Hugging Face Profile</h3>
-              <p>Explore my fine-tuned language models specialized in chemical engineering question-answering and curated datasets built on R1D14B architecture with domain-specific training data.</p>
-              <span className="join-link">View Profile →</span>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* ─── Projects Section ─── */}
       <section className="section" id="projects">
@@ -540,20 +516,7 @@ function App() {
               and life support systems to extraterrestrial habitats and beyond.
             </p>
 
-            <div className="space-stats">
-              <div className="space-stat">
-                <div className="stat-number">∞</div>
-                <div className="stat-label">Possibilities</div>
-              </div>
-              <div className="space-stat">
-                <div className="stat-number">Daily</div>
-                <div className="stat-label">Space Updates</div>
-              </div>
-              <div className="space-stat">
-                <div className="stat-number">1</div>
-                <div className="stat-label">Shared Dream</div>
-              </div>
-            </div>
+
 
             <a
               href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
@@ -699,7 +662,7 @@ function App() {
                 </button>
 
                 {formStatus === 'error' && (
-                  <p className="form-status-error">Please replace YOUR_FORM_ID with your Formspree ID to enable the form.</p>
+                  <p className="form-status-error">Something went wrong. Please try again or email me at maliksaad2443@gmail.com.</p>
                 )}
                 {formStatus === 'success' && (
                   <p className="form-status-success">Thanks! I'll get back to you soon.</p>
@@ -742,9 +705,25 @@ function App() {
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-top">
-            <a href="#hero" className="footer-logo" onClick={e => handleNavClick(e, '#hero')}>
-              <img src="/logo.svg" alt="SAAD" />
-            </a>
+            <div className="footer-brand-section">
+              <a href="#hero" className="footer-logo" onClick={e => handleNavClick(e, '#hero')}>
+                <img src="/logo.svg" alt="SAAD" />
+              </a>
+              <div className="footer-social-links">
+                <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  <WhatsAppIcon />
+                </a>
+                <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <FacebookIcon />
+                </a>
+                <a href="https://x.com/Cheme1569231" target="_blank" rel="noopener noreferrer" aria-label="X">
+                  <XIcon />
+                </a>
+                <a href="https://www.instagram.com/i_m_arsonist?igsh=OGdiOW11a3J5bGlq" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <InstagramIcon />
+                </a>
+              </div>
+            </div>
 
             <div className="footer-nav">
               {NAV_LINKS.slice(1).map(link => (
@@ -752,9 +731,6 @@ function App() {
                   {link.label}
                 </a>
               ))}
-            </div>
-
-            <div className="footer-social-links" style={{ display: 'none' }}>
             </div>
           </div>
 
