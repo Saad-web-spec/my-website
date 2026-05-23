@@ -251,7 +251,7 @@ const PROJECTS = [
     icon: <HuggingFaceIcon />,
     title: 'Hugging Face Profile',
     desc: 'Explore my fine-tuned AI models, curated datasets, and spaces on Hugging Face — bridging chemical engineering with modern AI.',
-    link: 'https://huggingface.co/MSaad',
+    link: 'https://huggingface.co/ali12345672344',
     glowClass: 'project-hf-glow',
   },
 ];
