@@ -37,6 +37,34 @@ const HuggingFaceIcon = () => (
 );
 
 /* ═══════════════════════════════════════════════════
+   PROJECT ICON – Beaker / Flask
+   ═══════════════════════════════════════════════════ */
+const BeakerIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 3h6M10 3v6.5L4.5 18.5a1.5 1.5 0 001.3 2.25h12.4a1.5 1.5 0 001.3-2.25L14 9.5V3"/>
+    <path d="M8.5 14h7"/>
+  </svg>
+);
+
+const BrainIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2a5 5 0 015 5c0 1.5-.5 2.5-1.5 3.5L12 14l-3.5-3.5C7.5 9.5 7 8.5 7 7a5 5 0 015-5z"/>
+    <path d="M12 14v8"/>
+    <path d="M9 18h6"/>
+    <circle cx="12" cy="7" r="1.5"/>
+  </svg>
+);
+
+/* ═══════════════════════════════════════════════════
+   SEND ICON – For Contact Form
+   ═══════════════════════════════════════════════════ */
+const SendIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+  </svg>
+);
+
+/* ═══════════════════════════════════════════════════
    TYPEWRITER COMPONENT
    ═══════════════════════════════════════════════════ */
 const Typewriter = ({ words, delay = 80, pause = 2200 }) => {
@@ -165,8 +193,9 @@ const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'AI Models', href: '#ai-models' },
-  { label: 'Communities', href: '#communities' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Space', href: '#space' },
+  { label: 'Communities', href: '#communities' },
   { label: 'Socials', href: '#socials' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -209,6 +238,24 @@ const SOCIAL_LINKS = [
   },
 ];
 
+/* Project cards data */
+const PROJECTS = [
+  {
+    icon: <BeakerIcon />,
+    title: 'ChemBlender',
+    desc: 'AI-powered chemical engineering tool that blends machine learning with process engineering to solve complex industrial problems and optimize workflows.',
+    link: 'https://huggingface.co/MSaad',
+    glowClass: 'project-chem-glow',
+  },
+  {
+    icon: <BrainIcon />,
+    title: 'Fine-tuned AI Models',
+    desc: 'Custom-trained language models deployed on Hugging Face, specialized in chemical engineering Q&A, domain-specific reasoning, and academic assistance.',
+    link: 'https://huggingface.co/MSaad',
+    glowClass: 'project-ai-glow',
+  },
+];
+
 /* ═══════════════════════════════════════════════════
    MAIN APP
    ═══════════════════════════════════════════════════ */
@@ -217,8 +264,20 @@ function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  /* Contact form state */
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formErrors, setFormErrors] = useState({});
+  const [formStatus, setFormStatus] = useState('idle'); // idle | sending | success | error
+
   // Scroll-triggered reveals
   useRevealOnScroll();
+
+  // Initialize AOS (Animate On Scroll)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.AOS) {
+      window.AOS.init({ duration: 800, once: true });
+    }
+  }, []);
 
   // Navbar scroll effect
   useEffect(() => {
@@ -246,6 +305,61 @@ function App() {
     setMobileOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  /* ─── Contact form handlers ─── */
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+    if (!formData.message.trim()) errors.message = 'Message is required';
+    return errors;
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (formErrors[name]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormStatus('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 4000);
+      }
+    } catch {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -336,9 +450,9 @@ function App() {
       {/* ─── About Section ─── */}
       <section className="section" id="about">
         <div className="container">
-          <h2 className="section-title reveal">About Me</h2>
-          <p className="section-subtitle reveal">The story behind the vision</p>
-          <div className="section-divider reveal" />
+          <h2 className="section-title reveal" data-aos="fade-up">About Me</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">The story behind the vision</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
 
           <div className="about-grid">
             <div className="about-text reveal-left">
@@ -356,10 +470,25 @@ function App() {
               </p>
               <p>
                 Beyond my technical work, I'm deeply passionate about <span className="about-highlight">Space
-                Sciences</span> and community building. Through my platforms, I've connected students,
+                Sciences</span> and community building. Through my platforms, I've connected 500+ students,
                 researchers, and professionals who share knowledge, challenge conventional thinking,
                 and push the boundaries of what's possible in engineering and beyond.
               </p>
+            </div>
+
+            <div className="about-stats-row reveal-right">
+              <div className="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div className="stat-number">500+</div>
+                <div className="stat-label">Community Members</div>
+              </div>
+              <div className="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div className="stat-number">5+</div>
+                <div className="stat-label">Active Platforms</div>
+              </div>
+              <div className="stat-card" data-aos="fade-up" data-aos-delay="300">
+                <div className="stat-number">Daily</div>
+                <div className="stat-label">AI-Curated Content</div>
+              </div>
             </div>
           </div>
         </div>
@@ -368,9 +497,9 @@ function App() {
       {/* ─── AI Models Section ─── */}
       <section className="section" id="ai-models">
         <div className="container">
-          <h2 className="section-title reveal">AI Models on Hugging Face</h2>
-          <p className="section-subtitle reveal">Custom fine-tuned models bridging AI and Chemical Engineering</p>
-          <div className="section-divider reveal" />
+          <h2 className="section-title reveal" data-aos="fade-up">AI Models on Hugging Face</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">Custom fine-tuned models bridging AI and Chemical Engineering</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
 
           <div className="social-grid reveal-stagger">
             <a
@@ -379,6 +508,7 @@ function App() {
               rel="noopener noreferrer"
               className="social-card hover-lift hf-glow"
               style={{ gridColumn: '1 / -1', maxWidth: '600px', margin: '0 auto' }}
+              data-aos="fade-up"
             >
               <div className="social-icon"><HuggingFaceIcon /></div>
               <h3>My Hugging Face Profile</h3>
@@ -389,12 +519,84 @@ function App() {
         </div>
       </section>
 
+      {/* ─── Projects Section ─── */}
+      <section className="section" id="projects">
+        <div className="container">
+          <h2 className="section-title reveal" data-aos="fade-up">Projects</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">Building the future of AI-powered engineering</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
+
+          <div className="projects-grid">
+            {PROJECTS.map((project, idx) => (
+              <div
+                key={project.title}
+                className={`project-card ${project.glowClass}`}
+                data-aos="fade-up"
+                data-aos-delay={idx * 150}
+              >
+                <div className="project-icon">{project.icon}</div>
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-desc">{project.desc}</p>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-btn"
+                >
+                  View Project →
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Space Section ─── */}
+      <section className="space-section" id="space">
+        <StarField />
+        <div className="container">
+          <div className="space-card reveal" data-aos="fade-up">
+            <div className="space-icon">🚀</div>
+            <h2>Towards The Cosmos</h2>
+            <p>
+              Process engineering doesn't stop at Earth's atmosphere. Explore a world where
+              chemical engineering meets interstellar ambition — from propulsion technologies
+              and life support systems to extraterrestrial habitats and beyond.
+            </p>
+
+            <div className="space-stats">
+              <div className="space-stat">
+                <div className="stat-number">∞</div>
+                <div className="stat-label">Possibilities</div>
+              </div>
+              <div className="space-stat">
+                <div className="stat-number">Daily</div>
+                <div className="stat-label">Space Updates</div>
+              </div>
+              <div className="space-stat">
+                <div className="stat-number">1</div>
+                <div className="stat-label">Shared Dream</div>
+              </div>
+            </div>
+
+            <a
+              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Explore the Cosmos
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Communities Section ─── */}
       <section className="section" id="communities">
         <div className="container">
-          <h2 className="section-title reveal">My Communities</h2>
-          <p className="section-subtitle reveal">Join the network and let's grow together</p>
-          <div className="section-divider reveal" />
+          <h2 className="section-title reveal" data-aos="fade-up">My Communities</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">Join the network and let's grow together</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
 
           <div className="social-grid reveal-stagger">
             {COMMUNITY_GROUPS.map(c => (
@@ -405,6 +607,7 @@ function App() {
                 rel="noopener noreferrer"
                 className={`social-card hover-lift ${c.glowClass}`}
                 style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1' }}
+                data-aos="fade-up"
               >
                 <div className="social-icon">{c.icon}</div>
                 <h3>{c.title}</h3>
@@ -412,31 +615,6 @@ function App() {
                 <span className="join-link">{c.linkText}</span>
               </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Space Section ─── */}
-      <section className="space-section" id="space">
-        <StarField />
-        <div className="container">
-          <div className="space-card reveal">
-            <div className="space-icon">🚀</div>
-            <h2>Towards The Space</h2>
-            <p>
-              Process engineering doesn't stop at Earth's atmosphere. Explore a world where
-              chemical engineering meets interstellar ambition — from propulsion technologies
-              and life support systems to extraterrestrial habitats and beyond.
-            </p>
-
-            <a
-              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Explore Space
-            </a>
           </div>
         </div>
       </section>
@@ -444,18 +622,20 @@ function App() {
       {/* ─── Socials Section ─── */}
       <section className="section" id="socials">
         <div className="container">
-          <h2 className="section-title reveal">Connect With Me</h2>
-          <p className="section-subtitle reveal">Follow my journey across social platforms</p>
-          <div className="section-divider reveal" />
+          <h2 className="section-title reveal" data-aos="fade-up">Connect With Me</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">Follow my journey across social platforms</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
 
           <div className="social-grid reveal-stagger">
-            {SOCIAL_LINKS.map(c => (
+            {SOCIAL_LINKS.map((c, idx) => (
               <a
                 key={c.title}
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`social-card hover-lift ${c.glowClass}`}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
               >
                 <div className="social-icon">{c.icon}</div>
                 <h3>{c.title}</h3>
@@ -467,37 +647,116 @@ function App() {
         </div>
       </section>
 
-      {/* ─── Contact Section ─── */}
+      {/* ─── Contact Section (with Form) ─── */}
       <section className="section" id="contact">
         <div className="container">
-          <h2 className="section-title reveal">Get In Touch</h2>
-          <p className="section-subtitle reveal">Have a question, idea, or just want to say hello?</p>
-          <div className="section-divider reveal" />
+          <h2 className="section-title reveal" data-aos="fade-up">Get In Touch</h2>
+          <p className="section-subtitle reveal" data-aos="fade-up">Have a question, idea, or just want to say hello?</p>
+          <div className="section-divider reveal" data-aos="fade-up" />
 
-          <div className="contact-card reveal">
-            <div className="contact-label">Email</div>
-            <div className="email-row">
-              <span className="email-address">maliksaad2443@gmail.com</span>
-              <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy}>
-                {copied ? <><CheckIcon /> Copied!</> : <><CopyIcon /> Copy</>}
-              </button>
+          <div className="contact-wrapper">
+            {/* Contact Form */}
+            <div className="contact-form-card reveal" data-aos="fade-up">
+              <h3 className="contact-form-heading">Send Me a Message</h3>
+              <form
+                className="contact-form"
+                onSubmit={handleFormSubmit}
+                noValidate
+              >
+                <div className="form-group">
+                  <label htmlFor="contact-name" className="form-label">Name</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    className={`form-input${formErrors.name ? ' form-input-error' : ''}`}
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  {formErrors.name && <span className="form-error">{formErrors.name}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="contact-email" className="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    className={`form-input${formErrors.email ? ' form-input-error' : ''}`}
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  {formErrors.email && <span className="form-error">{formErrors.email}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="contact-message" className="form-label">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    className={`form-input form-textarea${formErrors.message ? ' form-input-error' : ''}`}
+                    placeholder="Write your message..."
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  {formErrors.message && <span className="form-error">{formErrors.message}</span>}
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn-primary contact-submit-btn"
+                  disabled={formStatus === 'sending'}
+                >
+                  {formStatus === 'sending' ? (
+                    <>Sending...</>
+                  ) : formStatus === 'success' ? (
+                    <><CheckIcon /> Message Sent!</>
+                  ) : (
+                    <><SendIcon /> Send Message</>
+                  )}
+                </button>
+
+                {formStatus === 'error' && (
+                  <p className="form-status-error">Something went wrong. Please try again.</p>
+                )}
+                {formStatus === 'success' && (
+                  <p className="form-status-success">Thanks! I'll get back to you soon.</p>
+                )}
+              </form>
             </div>
 
-            <div className="contact-divider" />
-            <div className="contact-socials-label">Find me on</div>
-            <div className="contact-socials">
-              <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="WhatsApp">
-                <WhatsAppIcon />
-              </a>
-              <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="Facebook">
-                <FacebookIcon />
-              </a>
-              <a href="https://x.com/Cheme1569231" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="X">
-                <XIcon />
-              </a>
-              <a href="https://www.instagram.com/i_m_arsonist?igsh=OGdiOW11a3J5bGlq" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="Instagram">
-                <InstagramIcon />
-              </a>
+            {/* Existing contact info card */}
+            <div className="contact-card reveal" data-aos="fade-up" data-aos-delay="150">
+              <div className="contact-label">Email</div>
+              <div className="email-row">
+                <span className="email-address">maliksaad2443@gmail.com</span>
+                <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy}>
+                  {copied ? <><CheckIcon /> Copied!</> : <><CopyIcon /> Copy</>}
+                </button>
+              </div>
+
+              <div className="contact-divider" />
+              <div className="contact-socials-label">Find me on</div>
+              <div className="contact-socials">
+                <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="WhatsApp">
+                  <WhatsAppIcon />
+                </a>
+                <a href="https://www.facebook.com/share/189N5ahB5J/" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="Facebook">
+                  <FacebookIcon />
+                </a>
+                <a href="https://x.com/Cheme1569231" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="X">
+                  <XIcon />
+                </a>
+                <a href="https://www.instagram.com/i_m_arsonist?igsh=OGdiOW11a3J5bGlq" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="Instagram">
+                  <InstagramIcon />
+                </a>
+              </div>
             </div>
           </div>
         </div>
