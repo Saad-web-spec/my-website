@@ -416,6 +416,8 @@ function App() {
               <span className="static-role">I am a </span>
               <Typewriter words={[
                 'Chemical Engineering Student.',
+                'Engineer Saad.',
+                'Saad Engineer.',
                 'Space Enthusiast.',
                 'Community Builder.',
                 'AI Explorer.',
@@ -441,7 +443,7 @@ function App() {
           <div className="hero-image-wrapper hero-load hero-load-delay-3">
             <div className="breathing-glow" />
             <div className="hero-image-border">
-              <img src="/Profile.jpeg" alt="M.Saad" className="hero-image" />
+              <img src="/Profile.jpeg" alt="M.Saad (Saad Engineer / Engineer Saad) - Chemical Engineer & AI Researcher" className="hero-image" />
             </div>
           </div>
         </div>
@@ -456,7 +458,7 @@ function App() {
 
           <div className="about-content reveal-left">
             <p>
-              I'm a passionate <span className="about-highlight">B.Sc Chemical Engineering</span> student
+              I'm Muhammad Saad (known in the community as <span className="about-highlight">Engineer Saad</span> or <span className="about-highlight">Saad Engineer</span>), a passionate <span className="about-highlight">B.Sc Chemical Engineering</span> student
               with a singular purpose: to <span className="about-highlight">integrate Artificial Intelligence
               with Chemical Engineering</span>. I believe AI will revolutionize how we design processes,
               optimize reactions, and solve the most complex industrial challenges of our time.
