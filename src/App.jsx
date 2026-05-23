@@ -205,7 +205,7 @@ const COMMUNITY_GROUPS = [
     href: 'https://chat.whatsapp.com/FdnHn7jIZyZBQ2Yy8TFouI?mode=gi_t',
     icon: <WhatsAppIcon />,
     title: 'Engineering Community',
-    desc: 'An AI-powered WhatsApp group with fully automated daily posts — delivering process engineering content, academic resources, and industry updates.',
+    desc: 'A WhatsApp group for chemical engineering students and professionals to share resources, discuss ideas, and grow together.',
     linkText: 'Join WhatsApp Group →',
     glowClass: 'wa-glow',
   }
@@ -238,21 +238,14 @@ const SOCIAL_LINKS = [
   },
 ];
 
-/* Project cards data */
+/* Project cards data — single Hugging Face profile link */
 const PROJECTS = [
   {
-    icon: <BeakerIcon />,
-    title: 'ChemBlender',
-    desc: 'AI-powered chemical engineering tool that blends machine learning with process engineering to solve complex industrial problems and optimize workflows.',
+    icon: <HuggingFaceIcon />,
+    title: 'Hugging Face Profile',
+    desc: 'Explore my fine-tuned AI models, curated datasets, and spaces on Hugging Face — bridging chemical engineering with modern AI.',
     link: 'https://huggingface.co/MSaad',
-    glowClass: 'project-chem-glow',
-  },
-  {
-    icon: <BrainIcon />,
-    title: 'Fine-tuned AI Models',
-    desc: 'Custom-trained language models deployed on Hugging Face, specialized in chemical engineering Q&A, domain-specific reasoning, and academic assistance.',
-    link: 'https://huggingface.co/MSaad',
-    glowClass: 'project-ai-glow',
+    glowClass: 'project-hf-glow',
   },
 ];
 
@@ -454,42 +447,25 @@ function App() {
           <p className="section-subtitle reveal" data-aos="fade-up">The story behind the vision</p>
           <div className="section-divider reveal" data-aos="fade-up" />
 
-          <div className="about-grid">
-            <div className="about-text reveal-left">
-              <p>
-                I'm a passionate <span className="about-highlight">B.Sc Chemical Engineering</span> student
-                with a singular purpose: to <span className="about-highlight">integrate Artificial Intelligence
-                with Chemical Engineering</span>. I believe AI will revolutionize how we design processes,
-                optimize reactions, and solve the most complex industrial challenges of our time.
-              </p>
-              <p>
-                As a current chemical engineering student, I'm not just learning — I'm building.
-                I've fine-tuned and deployed <span className="about-highlight">3 custom AI models</span> on
-                Hugging Face, trained specifically on chemical engineering data. From automated Q&A systems
-                to domain-specific language models, I'm proving that AI and ChemE belong together.
-              </p>
-              <p>
-                Beyond my technical work, I'm deeply passionate about <span className="about-highlight">Space
-                Sciences</span> and community building. Through my platforms, I've connected 500+ students,
-                researchers, and professionals who share knowledge, challenge conventional thinking,
-                and push the boundaries of what's possible in engineering and beyond.
-              </p>
-            </div>
-
-            <div className="about-stats-row reveal-right">
-              <div className="stat-card" data-aos="fade-up" data-aos-delay="100">
-                <div className="stat-number">500+</div>
-                <div className="stat-label">Community Members</div>
-              </div>
-              <div className="stat-card" data-aos="fade-up" data-aos-delay="200">
-                <div className="stat-number">5+</div>
-                <div className="stat-label">Active Platforms</div>
-              </div>
-              <div className="stat-card" data-aos="fade-up" data-aos-delay="300">
-                <div className="stat-number">Daily</div>
-                <div className="stat-label">AI-Curated Content</div>
-              </div>
-            </div>
+          <div className="about-content reveal-left">
+            <p>
+              I'm a passionate <span className="about-highlight">B.Sc Chemical Engineering</span> student
+              with a singular purpose: to <span className="about-highlight">integrate Artificial Intelligence
+              with Chemical Engineering</span>. I believe AI will revolutionize how we design processes,
+              optimize reactions, and solve the most complex industrial challenges of our time.
+            </p>
+            <p>
+              As a current chemical engineering student, I'm not just learning — I'm building.
+              I've fine-tuned and deployed <span className="about-highlight">3 custom AI models</span> on
+              Hugging Face, trained specifically on chemical engineering data. From automated Q&A systems
+              to domain-specific language models, I'm proving that AI and ChemE belong together.
+            </p>
+            <p>
+              Beyond my technical work, I'm deeply passionate about <span className="about-highlight">Space
+              Sciences</span> and community building. Through my platforms, I connect students,
+              researchers, and professionals who share knowledge, challenge conventional thinking,
+              and push the boundaries of what's possible in engineering and beyond.
+            </p>
           </div>
         </div>
       </section>
@@ -526,7 +502,7 @@ function App() {
           <p className="section-subtitle reveal" data-aos="fade-up">Building the future of AI-powered engineering</p>
           <div className="section-divider reveal" data-aos="fade-up" />
 
-          <div className="projects-grid">
+          <div className="projects-grid projects-grid--single">
             {PROJECTS.map((project, idx) => (
               <div
                 key={project.title}
@@ -534,7 +510,7 @@ function App() {
                 data-aos="fade-up"
                 data-aos-delay={idx * 150}
               >
-                <div className="project-icon">{project.icon}</div>
+                <div className="project-icon project-icon--hf">{project.icon}</div>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-desc">{project.desc}</p>
                 <a
@@ -543,7 +519,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="project-btn"
                 >
-                  View Project →
+                  View Profile →
                 </a>
               </div>
             ))}
@@ -723,7 +699,7 @@ function App() {
                 </button>
 
                 {formStatus === 'error' && (
-                  <p className="form-status-error">Something went wrong. Please try again.</p>
+                  <p className="form-status-error">Please replace YOUR_FORM_ID with your Formspree ID to enable the form.</p>
                 )}
                 {formStatus === 'success' && (
                   <p className="form-status-success">Thanks! I'll get back to you soon.</p>
@@ -743,7 +719,7 @@ function App() {
 
               <div className="contact-divider" />
               <div className="contact-socials-label">Find me on</div>
-              <div className="contact-socials">
+              <div className="contact-socials contact-socials--horizontal">
                 <a href="https://wa.me/message/SEUXWPS46POGF1?src=qr" target="_blank" rel="noopener noreferrer" className="contact-social-link" aria-label="WhatsApp">
                   <WhatsAppIcon />
                 </a>

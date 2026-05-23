@@ -558,11 +558,25 @@ img {
    ═══════════════════════════════════════════════════ */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
   align-items: start;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+/* Single-column about content (no stat cards) */
+.about-content {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-weight: 300;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
 }
 
 .about-text {
@@ -1088,11 +1102,29 @@ img {
   transition: all 0.4s ease;
 }
 
+/* Hugging Face project glow */
+.project-hf-glow::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.6), transparent);
+}
+
+.project-hf-glow:hover {
+  border-color: rgba(255, 166, 0, 0.25);
+  box-shadow: 0 12px 40px rgba(255, 166, 0, 0.1);
+}
+
 .project-icon svg {
   width: 28px;
   height: 28px;
   color: var(--accent-cyan);
   transition: color 0.3s ease;
+}
+
+/* HuggingFace icon uses fill, not stroke */
+.project-icon--hf svg {
+  width: 32px;
+  height: 32px;
+  fill: #ffA600;
+  color: #ffA600;
 }
 
 .project-chem-glow .project-icon svg {
@@ -1147,6 +1179,17 @@ img {
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
   letter-spacing: 0.04em;
+}
+
+/* Center single card in projects grid */
+.projects-grid--single {
+  display: flex;
+  justify-content: center;
+}
+
+.projects-grid--single .project-card {
+  max-width: 500px;
+  width: 100%;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1344,6 +1387,15 @@ img {
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+/* Ensure icons always stay horizontal */
+.contact-socials--horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .contact-social-link {
