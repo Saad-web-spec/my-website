@@ -205,7 +205,7 @@ const COMMUNITY_GROUPS = [
   {
     href: 'https://chat.whatsapp.com/FdnHn7jIZyZBQ2Yy8TFouI?mode=gi_t',
     icon: <WhatsAppIcon />,
-    title: 'Engineering Community',
+    title: 'Engineering Group',
     desc: 'A WhatsApp group for chemical engineering students and professionals to share resources, discuss ideas, and grow together.',
     linkText: 'Join WhatsApp Group →',
     glowClass: 'wa-glow',
@@ -542,13 +542,13 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`social-card hover-lift ${c.glowClass}`}
-                style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1' }}
+                style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
                 data-aos="fade-up"
               >
                 <div className="social-icon">{c.icon}</div>
                 <h3>{c.title}</h3>
                 <p>{c.desc}</p>
-                <span className="join-link">{c.linkText}</span>
+                <span className="btn-primary wa-glow" style={{ marginTop: '1rem', display: 'inline-block' }}>{c.linkText}</span>
               </a>
             ))}
           </div>
@@ -559,10 +559,12 @@ function App() {
       <section className="space-section" id="space" aria-labelledby="space-heading" style={{ marginTop: '0', paddingTop: '2rem' }}>
         <StarField />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="space-card" data-aos="fade-up">
-            <div className="space-icon" aria-hidden="true" style={{ color: '#25D366' }}><WhatsAppIcon /></div>
-            <h2 id="space-heading">Towards The Cosmos</h2>
-            <p>
+          <div className="space-card" data-aos="fade-up" style={{ marginTop: '3rem', maxWidth: '800px', padding: '4rem 2rem' }}>
+            <div className="space-icon" aria-hidden="true" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem', color: '#25D366' }}>
+              <WhatsAppIcon />
+            </div>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Towards The Cosmos</h2>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2.5rem' }}>
               Space science captivates me as much as chemical engineering. From propulsion chemistry
               to life support systems and extraterrestrial habitats — the intersection of ChemE and
               space exploration is where I believe humanity's future lies. Join our channel to stay updated.
@@ -572,6 +574,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary wa-glow"
+              style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}
             >
               Join WhatsApp Channel →
             </a>
