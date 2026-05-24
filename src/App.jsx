@@ -209,14 +209,6 @@ const COMMUNITY_GROUPS = [
     desc: 'A WhatsApp group for chemical engineering students and professionals to share resources, discuss ideas, and grow together.',
     linkText: 'Join WhatsApp Group →',
     glowClass: 'wa-glow',
-  },
-  {
-    href: 'https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z',
-    icon: <WhatsAppIcon />,
-    title: 'Towards The Cosmos',
-    desc: 'Explore a world where chemical engineering meets interstellar ambition — space updates, propulsion, and extraterrestrial habitats.',
-    linkText: 'Explore the Cosmos →',
-    glowClass: 'wa-glow',
   }
 ];
 
@@ -503,30 +495,6 @@ function App() {
 
 
 
-      {/* ─── Space Section ─── */}
-      <section className="space-section" id="space" aria-labelledby="space-heading">
-        <StarField />
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="space-card" data-aos="fade-up">
-            <div className="space-icon" aria-hidden="true">🚀</div>
-            <h2 id="space-heading">Towards The Cosmos</h2>
-            <p>
-              Space science captivates me as much as chemical engineering. From propulsion chemistry
-              to life support systems and extraterrestrial habitats — the intersection of ChemE and
-              space exploration is where I believe humanity's future lies.
-            </p>
-            <a
-              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Explore the Cosmos →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Projects Section ─── */}
       <section className="section" id="projects">
         <div className="container">
@@ -583,6 +551,30 @@ function App() {
                 <span className="join-link">{c.linkText}</span>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Space Section (Towards The Cosmos Big Card) ─── */}
+      <section className="space-section" id="space" aria-labelledby="space-heading" style={{ marginTop: '0', paddingTop: '2rem' }}>
+        <StarField />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="space-card" data-aos="fade-up">
+            <div className="space-icon" aria-hidden="true" style={{ color: '#25D366' }}><WhatsAppIcon /></div>
+            <h2 id="space-heading">Towards The Cosmos</h2>
+            <p>
+              Space science captivates me as much as chemical engineering. From propulsion chemistry
+              to life support systems and extraterrestrial habitats — the intersection of ChemE and
+              space exploration is where I believe humanity's future lies. Join our channel to stay updated.
+            </p>
+            <a
+              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary wa-glow"
+            >
+              Join WhatsApp Channel →
+            </a>
           </div>
         </div>
       </section>
