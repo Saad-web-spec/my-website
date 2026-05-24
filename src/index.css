@@ -10,10 +10,10 @@
   --text-secondary: #8892a8;
   --text-muted: #555c6e;
 
-  --accent-blue: #3b82f6;
-  --accent-cyan: #06b6d4;
-  --accent-purple: #8b5cf6;
-  --accent-pink: #ec4899;
+  --accent-blue: #ffd700;
+  --accent-cyan: #ff6b08;
+  --accent-purple: #ff007f;
+  --accent-pink: #ff0055;
 
   --glass-bg: rgba(12, 14, 24, 0.55);
   --glass-bg-hover: rgba(20, 24, 40, 0.7);
@@ -152,7 +152,7 @@ img {
    GRADIENT TEXT
    ═══════════════════════════════════════════════════ */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4, #8b5cf6, #ec4899, #3b82f6);
+  background: linear-gradient(135deg, #ffd700, #ff6b08, #ff007f, #ff0055, #ffd700);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -493,7 +493,7 @@ img {
 .hero-image-border {
   padding: 3px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(59,130,246,0.4), rgba(139,92,246,0.2), rgba(6,182,212,0.3));
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 107, 8, 0.2), rgba(255, 0, 127, 0.3));
   position: relative;
   z-index: 1;
   animation: border-rotate 10s linear infinite;
@@ -1241,8 +1241,10 @@ img {
 }
 
 .form-input {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-sm);
   padding: 0.85rem 1.2rem;
   font-size: 0.95rem;
@@ -1259,9 +1261,9 @@ img {
 }
 
 .form-input:focus {
-  border-color: var(--accent-blue);
-  background: rgba(59, 130, 246, 0.04);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+  border-color: var(--accent-cyan);
+  background: rgba(255, 107, 8, 0.02);
+  box-shadow: 0 0 15px rgba(255, 107, 8, 0.15);
 }
 
 .form-input-error {
@@ -1284,6 +1286,16 @@ img {
   width: 100%;
   margin-top: 0.5rem;
   justify-content: center;
+  background: linear-gradient(135deg, #ffd700, #ff6b08, #ff007f) !important;
+  color: #030303 !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(255, 107, 8, 0.2);
+  font-weight: 600;
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(255, 107, 8, 0.35);
 }
 
 .contact-submit-btn:disabled {
@@ -1805,3 +1817,701 @@ img {
     align-items: center;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   PREMIUM ULTRA-UPGRADES
+   ═══════════════════════════════════════════════════ */
+
+/* Terminal & Hero Column adjustments */
+.hero-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.terminal-container-hero {
+  width: 100%;
+  max-width: 480px;
+}
+
+.glass-terminal {
+  background: rgba(8, 8, 16, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(59, 130, 246, 0.05);
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+
+.terminal-header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  gap: 6px;
+  position: relative;
+}
+
+.terminal-header .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.terminal-title {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+}
+
+.terminal-body {
+  padding: 1.2rem;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  min-height: 150px;
+  color: #a9b1d6;
+}
+
+.terminal-line {
+  margin-bottom: 0.5rem;
+  white-space: pre-wrap;
+}
+
+.terminal-line.active-line {
+  color: #7aa2f7;
+}
+
+.command-color {
+  color: #7aa2f7;
+}
+
+.success-color {
+  color: #9ece6a;
+}
+
+.online-color {
+  color: #bb9af3;
+  text-shadow: 0 0 10px rgba(187, 154, 243, 0.3);
+  font-weight: bold;
+}
+
+.cursor-block {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #06b6d4;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.cursor-block.blink {
+  animation: terminal-blink 1s step-end infinite;
+}
+
+@keyframes terminal-blink {
+  50% { opacity: 0; }
+}
+
+/* Glowing Alternating Vertical Timeline */
+.timeline-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 4rem auto 0;
+  padding: 1rem 0;
+}
+
+.timeline-center-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 3.5rem;
+  width: 50%;
+  z-index: 2;
+}
+
+.timeline-item-left {
+  left: 0;
+  justify-content: flex-end;
+  padding-right: 3rem;
+}
+
+.timeline-item-right {
+  left: 50%;
+  justify-content: flex-start;
+  padding-left: 3rem;
+}
+
+.timeline-node {
+  position: absolute;
+  top: 25px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid #fff;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item-left .timeline-node {
+  right: -10px;
+}
+
+.timeline-item-right .timeline-node {
+  left: -10px;
+}
+
+.timeline-node-inner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Timeline node glows */
+.timeline-glow-blue .timeline-node {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 12px var(--accent-blue);
+}
+.timeline-glow-blue .timeline-node-inner {
+  background-color: var(--accent-blue);
+}
+
+.timeline-glow-purple .timeline-node {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 12px var(--accent-purple);
+}
+.timeline-glow-purple .timeline-node-inner {
+  background-color: var(--accent-purple);
+}
+
+.timeline-glow-cyan .timeline-node {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-cyan);
+}
+.timeline-glow-cyan .timeline-node-inner {
+  background-color: var(--accent-cyan);
+}
+
+.timeline-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  transition: border-color 0.4s ease, transform 0.4s var(--transition-smooth);
+}
+
+.timeline-item-left:hover .timeline-card {
+  transform: translateX(-5px) translateY(-2px);
+}
+
+.timeline-item-right:hover .timeline-card {
+  transform: translateX(5px) translateY(-2px);
+}
+
+.timeline-card-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-glow-blue .timeline-card-date { color: var(--accent-blue); }
+.timeline-glow-purple .timeline-card-date { color: var(--accent-purple); }
+.timeline-glow-cyan .timeline-card-date { color: var(--accent-cyan); }
+
+.timeline-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.3px;
+}
+
+.timeline-card-subtitle {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.timeline-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* 3D Tilt Glare Overlay & Card Properties */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  mix-blend-mode: overlay;
+}
+
+.social-card-anchor {
+  text-decoration: none;
+  display: block;
+}
+
+/* Disable old CSS floating particles */
+.particles-bg {
+  display: none !important;
+}
+
+/* Custom Responsive Styles */
+@media (max-width: 900px) {
+  .hero-right-col {
+    order: 1;
+    gap: 2rem;
+  }
+  .hero-content {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-center-line {
+    left: 20px;
+    transform: none;
+  }
+  .timeline-item {
+    width: 100%;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-item-left {
+    padding-right: 0;
+    padding-left: 3rem;
+    left: 0;
+    justify-content: flex-start;
+  }
+  .timeline-item-right {
+    padding-left: 3rem;
+    left: 0;
+    justify-content: flex-start;
+  }
+  .timeline-item-left .timeline-node {
+    left: 10px;
+    right: auto;
+  }
+  .timeline-item-right .timeline-node {
+    left: 10px;
+    right: auto;
+  }
+  .timeline-card {
+    max-width: 100%;
+  }
+  .timeline-item-left:hover .timeline-card,
+  .timeline-item-right:hover .timeline-card {
+    transform: translateY(-2px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   PREMIUM HERO PROFILE UPGRADES - LAYERED 3D PARALLAX
+   ═══════════════════════════════════════════════════ */
+
+.avatar-parallax-card {
+  width: 380px;
+  height: 380px;
+  position: relative;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.avatar-parallax-card .card-glare {
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Back Layer: Cosmic Space Depth Plate */
+.parallax-layer-back {
+  background: radial-gradient(circle, rgba(255, 107, 8, 0.18) 0%, rgba(255, 0, 127, 0.06) 50%, transparent 72%);
+  transform: translateZ(-45px) scale(1.15);
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+/* Middle Layer: Glowing Dashed Orbit Telemetry */
+.parallax-layer-middle {
+  border: 1.5px dashed rgba(255, 107, 8, 0.35);
+  transform: translateZ(-22px) scale(1.06);
+  pointer-events: none;
+  animation: spin-slow-anim 35s linear infinite;
+  box-shadow: 
+    0 0 35px rgba(255, 107, 8, 0.18), 
+    inset 0 0 35px rgba(255, 0, 127, 0.18);
+  z-index: 1;
+}
+
+.parallax-layer-middle::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid rgba(255, 0, 127, 0.2);
+  border-radius: 50%;
+  animation: spin-slow-anim 20s linear infinite reverse;
+}
+
+/* Front Layer: Profile Image Border & Picture */
+.parallax-layer-front {
+  transform: translateZ(35px) scale(1.02);
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.profile-micro-badge {
+  position: absolute;
+  top: 15px;
+  right: -10px;
+  background: rgba(12, 14, 24, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.3rem;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.65), 
+    0 0 20px rgba(255, 107, 8, 0.25);
+  z-index: 5;
+  pointer-events: none;
+  transform: translateZ(45px); /* Pushes the badge even further out in 3D space! */
+}
+
+.profile-micro-badge span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #ffd700, #ff6b08, #ff007f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+/* Animations */
+.float-slow {
+  animation: float-slow-anim 6s ease-in-out infinite;
+}
+
+@keyframes float-slow-anim {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes spin-slow-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   PREMIUM HOLOGRAPHIC 3D DEPTH CARDS
+   ═══════════════════════════════════════════════════ */
+
+/* Main 3D Card wrappers */
+.project-tilt-card,
+.community-tilt-card,
+.social-card-tilt,
+.space-card {
+  transform-style: preserve-3d;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.card-3d-wrapper {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  position: relative;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  box-shadow: var(--shadow-card);
+  transition: all 0.5s var(--transition-smooth);
+}
+
+/* Layer Defaults */
+.card-3d-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: transform 0.4s var(--transition-smooth), opacity 0.4s ease, border-color 0.4s ease;
+}
+
+/* Layer 1: Cosmic Background Gradient Nebula */
+.card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 8, 0.08) 0%, transparent 70%);
+  transform: translateZ(-30px) scale(0.9);
+  filter: blur(12px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Layer 2: Glowing Telemetry Dashed Orbit */
+.card-3d-layer-middle {
+  border: 1px dashed rgba(255, 255, 255, 0.04);
+  transform: translateZ(-15px) scale(0.95);
+  opacity: 0.25;
+  z-index: 1;
+}
+
+/* Layer 3: Main Text & Button Content (Interactive!) */
+.card-3d-layer-front {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(25px);
+  pointer-events: auto; /* Required for links to click! */
+}
+
+/* Layer 4: Brand Floating Icon Badges */
+.card-3d-layer-float {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.2rem;
+  width: auto;
+  height: auto;
+  transform: translateZ(45px);
+  z-index: 3;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* ─── HOVER TRIGGERS (PARALLAX SPLIT!) ─── */
+.project-tilt-card:hover .card-3d-wrapper,
+.community-tilt-card:hover .card-3d-wrapper,
+.social-card-tilt:hover .card-3d-wrapper,
+.space-card:hover .card-3d-wrapper {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.project-tilt-card:hover .card-3d-layer-back,
+.community-tilt-card:hover .card-3d-layer-back,
+.social-card-tilt:hover .card-3d-layer-back,
+.space-card:hover .card-3d-layer-back {
+  transform: translateZ(-45px) scale(1.08);
+  opacity: 0.95;
+}
+
+.project-tilt-card:hover .card-3d-layer-middle,
+.community-tilt-card:hover .card-3d-layer-middle,
+.social-card-tilt:hover .card-3d-layer-middle,
+.space-card:hover .card-3d-layer-middle {
+  transform: translateZ(-22px) scale(1.02);
+  border-color: rgba(255, 107, 8, 0.25);
+  opacity: 0.85;
+  animation: spin-slow-anim 25s linear infinite;
+}
+
+.project-tilt-card:hover .card-3d-layer-front,
+.community-tilt-card:hover .card-3d-layer-front,
+.social-card-tilt:hover .card-3d-layer-front,
+.space-card:hover .card-3d-layer-front {
+  transform: translateZ(35px) scale(1.02);
+}
+
+.project-tilt-card:hover .card-3d-layer-float,
+.community-tilt-card:hover .card-3d-layer-float,
+.social-card-tilt:hover .card-3d-layer-float,
+.space-card:hover .card-3d-layer-float {
+  transform: translateZ(55px) scale(1.18);
+  animation: float-slow-anim 5s ease-in-out infinite;
+}
+
+/* ─── BRAND-SPECIFIC COSMIC BACKDROPS & INTERACTIVE GLARES ─── */
+
+/* WhatsApp Cards Glow (wa-glow) */
+.wa-glow .card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.15) 0%, transparent 70%);
+}
+.wa-glow:hover .card-3d-layer-middle {
+  border-color: rgba(37, 211, 102, 0.35) !important;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.12);
+}
+.wa-glow .card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.15) 0%, transparent 80%) !important;
+  mix-blend-mode: overlay;
+}
+
+/* Hugging Face / Projects Glow */
+.project-hf-glow .card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 170, 0, 0.15) 0%, transparent 70%);
+}
+.project-hf-glow:hover .card-3d-layer-middle {
+  border-color: rgba(255, 170, 0, 0.35) !important;
+}
+.project-hf-glow .card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 170, 0, 0.15) 0%, transparent 80%) !important;
+}
+
+/* Facebook Glow */
+.fb-glow .card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(24, 119, 242, 0.15) 0%, transparent 70%);
+}
+.fb-glow:hover .card-3d-layer-middle {
+  border-color: rgba(24, 119, 242, 0.35) !important;
+}
+.fb-glow .card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(24, 119, 242, 0.15) 0%, transparent 80%) !important;
+}
+
+/* X (Twitter) Glow */
+.x-glow .card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 8, 0.15) 0%, transparent 70%);
+}
+.x-glow:hover .card-3d-layer-middle {
+  border-color: rgba(255, 107, 8, 0.35) !important;
+}
+.x-glow .card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 8, 0.15) 0%, transparent 80%) !important;
+}
+
+/* Instagram Glow */
+.ig-glow .card-3d-layer-back {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.15) 0%, transparent 70%);
+}
+.ig-glow:hover .card-3d-layer-middle {
+  border-color: rgba(255, 0, 127, 0.35) !important;
+}
+.ig-glow .card-glare {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.15) 0%, transparent 80%) !important;
+}
+
+/* Reset default card properties to support 3D stack wrapper */
+.social-card,
+.project-card {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.social-card-anchor {
+  overflow: visible !important;
+}
+
+/* Positioning adjustments for absolute float layer inside different cards */
+
+/* Reset base card float layers to prevent 100% width/height inheritance from .card-3d-layer */
+.card-3d-layer-float {
+  width: auto !important;
+  height: auto !important;
+  left: auto !important;
+  right: 2.2rem !important;
+  top: 2.2rem !important;
+  bottom: auto !important;
+}
+
+/* ─── LEFT-ALIGNED CARDS (Projects & Socials) ─── */
+.project-tilt-card .card-3d-layer-float {
+  top: 2rem !important;
+  right: 2rem !important;
+}
+
+.social-card-tilt .card-3d-layer-float {
+  top: 2.2rem !important;
+  right: 2.2rem !important;
+}
+
+/* Prevent text overlap with the top-right icon on small screens or long titles */
+.project-tilt-card .project-title {
+  padding-right: 4.5rem !important;
+}
+
+.social-card-tilt .card-3d-layer-front h3 {
+  padding-right: 3.5rem !important;
+}
+
+.card-3d-layer-float .project-icon,
+.card-3d-layer-float .social-icon {
+  margin-bottom: 0 !important;
+}
+
+/* ─── CENTERED CARDS (WhatsApp Group & Space Card) ─── */
+.community-tilt-card .card-3d-layer-float,
+.space-card .card-3d-layer-float {
+  left: 50% !important;
+  right: auto !important;
+  top: 2.5rem !important;
+  transform: translateZ(45px) translateX(-50%) !important;
+}
+
+/* Hover scales and horizontal centration translation */
+.community-tilt-card:hover .card-3d-layer-float,
+.space-card:hover .card-3d-layer-float {
+  transform: translateZ(55px) translateX(-50%) scale(1.18) !important;
+}
+
+/* Shift headings down to make visual space for the top-centered icon */
+.community-tilt-card .card-3d-layer-front h3 {
+  margin-top: 3.5rem !important;
+}
+
+.space-card .card-3d-layer-front h2 {
+  margin-top: 3.8rem !important;
+}
+

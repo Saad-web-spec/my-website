@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" fill="none">
-  <line x1="0" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-  <text x="200" y="38" text-anchor="middle" fill="currentColor" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="200" letter-spacing="18">SAAD</text>
-  <line x1="340" y1="30" x2="400" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60" fill="none">
+  <line x1="20" y1="30" x2="110" y2="30" stroke="currentColor" stroke-width="1.5" />
+  <text x="250" y="38" text-anchor="middle" fill="currentColor" font-family="'Inter', -apple-system, sans-serif" font-size="32" font-weight="200" letter-spacing="18">S Λ Λ D</text>
+  <line x1="390" y1="30" x2="480" y2="30" stroke="currentColor" stroke-width="1.5" />
 </svg>
