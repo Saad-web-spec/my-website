@@ -75,9 +75,15 @@ function App() {
     setMobileOpen(false);
     const el = document.querySelector(href);
     if (!el) return;
-    const navbarHeight = 60;
-    const top = el.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-    window.scrollTo({ top, behavior: 'smooth' });
+    
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const targetY = rect.top + scrollTop - 45; // Subtracted 45px (instead of 75px) to align section titles snuggly below the fixed navbar without awkward empty gaps
+    
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
   };
 
   return (

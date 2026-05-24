@@ -73,13 +73,17 @@ export const Starfield = () => {
       currentOffset.y += (targetOffset.y - currentOffset.y) * 0.08;
 
       stars.forEach((star) => {
-        // Draw position with depth parallax
+        // Draw position with depth parallax + automatic drift
         let sx = (star.x + currentOffset.x * star.depth) % width;
         let sy = (star.y + currentOffset.y * star.depth) % height;
 
+        // Auto-drift upwards
+        star.y -= 0.15 * star.depth;
+        
         // Wrap around bounds
         if (sx < 0) sx += width;
         if (sy < 0) sy += height;
+        if (star.y < 0) star.y += height;
 
         // Gentle twinkling
         star.twinklePhase += star.twinkleSpeed;

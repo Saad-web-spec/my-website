@@ -25,17 +25,19 @@ export const Communities = ({ handleNavClick }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-card-anchor"
-                  style={{ maxWidth: '600px', margin: '0 auto', gridColumn: '1 / -1', display: 'block', width: '100%' }}
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                  style={{ maxWidth: '400px', margin: '0 auto', gridColumn: '1 / -1', display: 'block', width: '100%', minHeight: '440px' }}
                   data-aos="fade-up"
                 >
                   <TiltCard
                     className={`community-tilt-card ${c.glowClass}`}
                     maxRotation={10}
                     scale={1.01}
-                    style={{ overflow: 'visible', background: 'none', border: 'none', boxShadow: 'none' }}
+                    style={{ overflow: 'visible', background: 'none', border: 'none', boxShadow: 'none', height: '100%' }}
                   >
                     {/* 3D Depth Card Layers */}
-                    <div className="card-3d-wrapper">
+                    <div className="card-3d-wrapper" style={{ height: '100%' }}>
                       {/* Layer 1: Green Background Glow */}
                       <div className="card-3d-layer card-3d-layer-back" />
 
@@ -43,18 +45,16 @@ export const Communities = ({ handleNavClick }) => {
                       <div className="card-3d-layer card-3d-layer-middle" />
 
                       {/* Layer 3: Main Text & Button Content */}
-                      <div className="card-3d-layer card-3d-layer-front" style={{ textAlign: 'center' }}>
-                        <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-                          <Icon style={{ width: '2.5rem', height: '2.5rem' }} />
+                      <div className="card-3d-layer card-3d-layer-front" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', height: '100%' }}>
+                        <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+                          <Icon style={{ width: '3.5rem', height: '3.5rem', color: '#25D366' }} />
                         </div>
                         <h3>{c.title}</h3>
-                        <p>{c.desc}</p>
-                        <span className="btn-primary wa-glow" style={{ marginTop: '1rem', display: 'inline-block' }}>
+                        <p style={{ margin: '0.5rem 0' }}>{c.desc}</p>
+                        <span className="btn-primary wa-glow" style={{ marginTop: '1.5rem', display: 'inline-block' }}>
                           {c.linkText}
                         </span>
                       </div>
-
-
                     </div>
                   </TiltCard>
                 </a>
@@ -71,11 +71,11 @@ export const Communities = ({ handleNavClick }) => {
             className="space-card wa-glow"
             maxRotation={8}
             scale={1.01}
-            style={{ margin: '0 auto', maxWidth: '600px', padding: '0', overflow: 'visible', background: 'none', border: 'none', boxShadow: 'none' }}
+            style={{ margin: '0 auto', maxWidth: '400px', padding: '0', overflow: 'visible', background: 'none', border: 'none', boxShadow: 'none', minHeight: '440px', width: '100%' }}
             data-aos="fade-up"
           >
             {/* 3D Depth Card Layers */}
-            <div className="card-3d-wrapper" style={{ minHeight: '380px' }}>
+            <div className="card-3d-wrapper" style={{ height: '100%' }}>
               {/* Layer 1: Cosmic Nebula Backdrop */}
               <div className="card-3d-layer card-3d-layer-back" />
 
@@ -83,14 +83,14 @@ export const Communities = ({ handleNavClick }) => {
               <div className="card-3d-layer card-3d-layer-middle" />
 
               {/* Layer 3: Main Text & CTA */}
-              <div className="card-3d-layer card-3d-layer-front" style={{ textAlign: 'center', padding: '2.5rem' }}>
-                <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-                  <WhatsAppIcon style={{ width: '3rem', height: '3rem', color: '#25D366' }} />
+              <div className="card-3d-layer card-3d-layer-front" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', height: '100%' }}>
+                <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+                  <WhatsAppIcon style={{ width: '3.5rem', height: '3.5rem', color: '#25D366' }} />
                 </div>
-                <h2 id="space-heading" style={{ fontSize: '1.8rem', marginBottom: '1.2rem', fontWeight: '700', letterSpacing: '-0.5px' }}>
+                <h2 id="space-heading" style={{ fontSize: '1.8rem', marginBottom: '1rem', fontWeight: '700', letterSpacing: '-0.5px' }}>
                   Towards The Cosmos
                 </h2>
-                <p style={{ fontSize: '1rem', lineHeight: '1.8', marginBottom: '2rem', color: 'var(--text-secondary)', fontWeight: '300' }}>
+                <p style={{ fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0', color: 'var(--text-secondary)', fontWeight: '300' }}>
                   Space science captivates me as much as chemical engineering. From rocket propulsion chemistry 
                   to closed-loop life support systems and planetary habitats — the intersection of chemical engineering 
                   and space exploration is where humanity's future lies. Join our channel to stay updated.
@@ -100,13 +100,11 @@ export const Communities = ({ handleNavClick }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary wa-glow"
-                  style={{ fontSize: '0.95rem', padding: '0.8rem 1.8rem', display: 'inline-block' }}
+                  style={{ fontSize: '0.95rem', padding: '0.8rem 1.8rem', marginTop: '1.5rem', display: 'inline-block' }}
                 >
                   Join WhatsApp Channel →
                 </a>
               </div>
-
-
             </div>
           </TiltCard>
         </div>
@@ -129,6 +127,8 @@ export const Communities = ({ handleNavClick }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-card-anchor"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
                   data-aos="fade-up"
                   data-aos-delay={idx * 100}
                 >
@@ -148,8 +148,8 @@ export const Communities = ({ handleNavClick }) => {
 
                       {/* Layer 3: Main Front Text Details */}
                       <div className="card-3d-layer card-3d-layer-front" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                        <div style={{ marginBottom: '1rem' }}>
-                          <Icon style={{ width: '2.5rem', height: '2.5rem' }} />
+                        <div className="badge-icon-wrapper">
+                          <Icon />
                         </div>
                         <h3>{c.title}</h3>
                         <p style={{ flexGrow: 1 }}>{c.desc}</p>

@@ -7,11 +7,8 @@ export const use3DTilt = (maxRotation = 10, scale = 1.02) => {
     const card = cardRef.current;
     if (!card) return;
 
-    const handleMouseMove = (e) => {
+    const updateTransform = (clientX, clientY) => {
       const rect = card.getBoundingClientRect();
-      const clientX = e.clientX;
-      const clientY = e.clientY;
-
       const width = rect.width;
       const height = rect.height;
       const centerX = rect.left + width / 2;
@@ -37,18 +34,18 @@ export const use3DTilt = (maxRotation = 10, scale = 1.02) => {
       }
     };
 
+    const handleMouseMove = (e) => updateTransform(e.clientX, e.clientY);
+    const handleTouchMove = (e) => updateTransform(e.touches[0].clientX, e.touches[0].clientY);
+
     const handleMouseEnter = () => {
       card.style.transition = 'transform 0.1s ease';
       const glare = card.querySelector('.card-glare');
-      if (glare) {
-        glare.style.transition = 'opacity 0.1s ease';
-      }
+      if (glare) glare.style.transition = 'opacity 0.1s ease';
     };
 
     const handleMouseLeave = () => {
       card.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-
       const glare = card.querySelector('.card-glare');
       if (glare) {
         glare.style.transition = 'opacity 0.5s ease';
@@ -59,11 +56,19 @@ export const use3DTilt = (maxRotation = 10, scale = 1.02) => {
     card.addEventListener('mousemove', handleMouseMove);
     card.addEventListener('mouseenter', handleMouseEnter);
     card.addEventListener('mouseleave', handleMouseLeave);
+    
+    // Touch support for mobile
+    card.addEventListener('touchmove', handleTouchMove, { passive: true });
+    card.addEventListener('touchstart', handleMouseEnter, { passive: true });
+    card.addEventListener('touchend', handleMouseLeave);
 
     return () => {
       card.removeEventListener('mousemove', handleMouseMove);
       card.removeEventListener('mouseenter', handleMouseEnter);
       card.removeEventListener('mouseleave', handleMouseLeave);
+      card.removeEventListener('touchmove', handleTouchMove);
+      card.removeEventListener('touchstart', handleMouseEnter);
+      card.removeEventListener('touchend', handleMouseLeave);
     };
   }, [maxRotation, scale]);
 

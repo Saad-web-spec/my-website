@@ -43,7 +43,7 @@ export const AboutTimeline = () => {
               <div 
                 key={idx} 
                 className={`timeline-item ${alignClass} ${m.glowClass}`}
-                data-aos={isEven ? "fade-right" : "fade-left"}
+                data-aos="fade-up"
                 data-aos-delay={idx * 100}
               >
                 <div className="timeline-node">

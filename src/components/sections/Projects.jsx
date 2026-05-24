@@ -34,8 +34,8 @@ export const Projects = () => {
 
                   {/* Layer 3: Main Front Text & Button Content */}
                   <div className="card-3d-layer card-3d-layer-front">
-                    <div style={{ marginBottom: '1rem' }}>
-                      <Icon style={{ width: '2.5rem', height: '2.5rem' }} />
+                    <div className="badge-icon-wrapper">
+                      <Icon />
                     </div>
                     <h3 className="project-title">{project.title}</h3>
                     <p className="project-desc">{project.desc}</p>

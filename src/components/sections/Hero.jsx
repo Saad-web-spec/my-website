@@ -6,13 +6,56 @@ export const Hero = ({ handleNavClick }) => {
   return (
     <section className="hero" id="hero">
       <div className="container hero-container">
-        <div className="hero-content">
-          <h2 className="greeting hero-load">Hi, I'm</h2>
-          <h1 className="hero-load hero-load-delay-1">
-            <span className="gradient-text">M.Saad</span>
-          </h1>
+        <div className="hero-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%', maxWidth: '850px', margin: '0 auto' }}>
+          
+          <div className="hero-header-row hero-load" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+            <TiltCard 
+              className="inline-avatar-card" 
+              maxRotation={15} 
+              scale={1.04} 
+              onTouchStart={() => {}}
+              style={{ 
+                borderRadius: '50%', 
+                padding: '0', 
+                background: 'none', 
+                border: 'none', 
+                boxShadow: 'none',
+                overflow: 'visible',
+                width: '180px',
+                height: '180px',
+                flexShrink: 0
+              }}
+            >
+              <div className="parallax-layer parallax-layer-back" />
+              <div className="parallax-layer parallax-layer-middle" />
+              <div className="parallax-layer parallax-layer-front">
+                <div className="hero-image-border" style={{ margin: 0, width: '100%', height: '100%', position: 'relative' }}>
+                  <img
+                    src="/Profile.jpeg"
+                    alt="M.Saad"
+                    className="hero-image"
+                    width="180"
+                    height="180"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                  <div className="profile-micro-badge float-slow" style={{ top: 'auto', bottom: '-5px', right: '-5px', padding: '0.35rem 0.8rem', transform: 'translateZ(45px) scale(0.8)' }}>
+                    <span style={{ fontSize: '0.72rem' }}>#Starboy</span>
+                  </div>
+                </div>
+              </div>
+            </TiltCard>
 
-          <div className="roles-container hero-load hero-load-delay-2">
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', textAlign: 'left' }}>
+              <h2 className="greeting" style={{ margin: 0, lineHeight: '1.2' }}>Hi, I'm</h2>
+              <h1 className="hero-load-delay-1" style={{ margin: 0, lineHeight: '1.2' }}>
+                <span className="gradient-text">M.Saad</span>
+              </h1>
+            </div>
+          </div>
+
+          <div className="roles-container hero-load hero-load-delay-2" style={{ justifyContent: 'center' }}>
             <span className="static-role">I am a </span>
             <Typewriter
               words={[
@@ -24,17 +67,17 @@ export const Hero = ({ handleNavClick }) => {
             />
           </div>
 
-          <p className="hero-description hero-load hero-load-delay-3">
+          <p className="hero-description hero-load hero-load-delay-3" style={{ margin: '0 auto 2.5rem' }}>
             A B.Sc Chemical Engineering student exploring the intersection of process systems, 
             artificial intelligence, and space sciences. I focus on building collaborative student communities, 
             sharing curated academic resources, and exploring open-source AI models.
           </p>
 
-          <div className="cta-group hero-load hero-load-delay-4">
+          <div className="cta-group hero-load hero-load-delay-4" style={{ justifyContent: 'center' }}>
             <a
-              href="#socials"
+              href="#communities"
               className="btn-primary"
-              onClick={(e) => handleNavClick(e, '#socials')}
+              onClick={(e) => handleNavClick(e, '#communities')}
             >
               Explore Communities
             </a>
@@ -45,50 +88,6 @@ export const Hero = ({ handleNavClick }) => {
             >
               Learn More
             </a>
-          </div>
-        </div>
-
-        <div className="hero-right-col hero-load hero-load-delay-3">
-          <div className="hero-image-wrapper">
-            {/* Multi-Layered 3D Parallax Stack Container */}
-            <TiltCard 
-              className="avatar-parallax-card" 
-              maxRotation={15} 
-              scale={1.04} 
-              style={{ 
-                borderRadius: '50%', 
-                padding: '0', 
-                background: 'none', 
-                border: 'none', 
-                boxShadow: 'none',
-                overflow: 'visible'
-              }}
-            >
-              {/* Back Layer: Cosmic Space Depth Plate */}
-              <div className="parallax-layer parallax-layer-back" />
-
-              {/* Middle Layer: Glowing Dashed Orbit Telemetry */}
-              <div className="parallax-layer parallax-layer-middle" />
-
-              {/* Front Layer: Profile Image Border & Picture */}
-              <div className="parallax-layer parallax-layer-front">
-                <div className="hero-image-border" style={{ margin: 0 }}>
-                  <img
-                    src="/Profile.jpeg"
-                    alt="M.Saad (Saad Engineer / Engineer Saad) - Chemical Engineering Student, AI Explorer & Space Enthusiast"
-                    className="hero-image"
-                    width="380"
-                    height="380"
-                    fetchPriority="high"
-                  />
-                </div>
-
-                {/* Floating micro-badge (#Starboy) */}
-                <div className="profile-micro-badge float-slow">
-                  <span>#Starboy</span>
-                </div>
-              </div>
-            </TiltCard>
           </div>
         </div>
       </div>
