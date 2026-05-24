@@ -559,12 +559,12 @@ function App() {
       <section className="space-section" id="space" aria-labelledby="space-heading" style={{ marginTop: '0', paddingTop: '2rem' }}>
         <StarField />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="space-card" data-aos="fade-up" style={{ marginTop: '3rem', maxWidth: '800px', padding: '4rem 2rem' }}>
-            <div className="space-icon" aria-hidden="true" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem', color: '#25D366' }}>
+          <div className="space-card" data-aos="fade-up" style={{ marginTop: '3rem', maxWidth: '600px', padding: '2rem' }}>
+            <div className="space-icon" aria-hidden="true" style={{ width: '48px', height: '48px', margin: '0 auto 1rem', color: '#25D366' }}>
               <WhatsAppIcon />
             </div>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Towards The Cosmos</h2>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2.5rem' }}>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Towards The Cosmos</h2>
+            <p style={{ fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
               Space science captivates me as much as chemical engineering. From propulsion chemistry
               to life support systems and extraterrestrial habitats — the intersection of ChemE and
               space exploration is where I believe humanity's future lies. Join our channel to stay updated.
@@ -574,7 +574,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary wa-glow"
-              style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}
+              style={{ fontSize: '0.95rem', padding: '0.75rem 1.5rem' }}
             >
               Join WhatsApp Channel →
             </a>
