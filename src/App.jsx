@@ -194,6 +194,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Blog', href: 'https://blog.saadengineer.works' },
   { label: 'Space', href: '#space' },
   { label: 'Communities', href: '#communities' },
   { label: 'Socials', href: '#socials' },
@@ -378,13 +379,22 @@ function App() {
           </a>
 
           <ul className="nav-links">
-            {NAV_LINKS.map(link => (
-              <li key={link.href}>
-                <a className="nav-link" href={link.href} onClick={e => handleNavClick(e, link.href)}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map(link => {
+              const isExternal = /^https?:\/\//.test(link.href);
+              return (
+                <li key={link.href}>
+                  {isExternal ? (
+                    <a className="nav-link" href={link.href} rel="noopener" >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <a className="nav-link" href={link.href} onClick={e => handleNavClick(e, link.href)}>
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <button
@@ -399,11 +409,18 @@ function App() {
         {/* Mobile Menu */}
         <div className={`mobile-overlay${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(false)} />
         <div className={`mobile-menu${mobileOpen ? ' open' : ''}`}>
-          {NAV_LINKS.map(link => (
-            <a key={link.href} className="mobile-nav-link" href={link.href} onClick={e => handleNavClick(e, link.href)}>
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map(link => {
+            const isExternal = /^https?:\/\//.test(link.href);
+            return isExternal ? (
+              <a key={link.href} className="mobile-nav-link" href={link.href} rel="noopener" onClick={() => setMobileOpen(false)}>
+                {link.label}
+              </a>
+            ) : (
+              <a key={link.href} className="mobile-nav-link" href={link.href} onClick={e => handleNavClick(e, link.href)}>
+                {link.label}
+              </a>
+            );
+          })}
         </div>
       </nav>
 
