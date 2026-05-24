@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap');
-
 /* ═══════════════════════════════════════════════════
    DESIGN TOKENS
    ═══════════════════════════════════════════════════ */
@@ -46,7 +44,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 15px;
+  scroll-padding-top: 55px;
 }
 
 body {
@@ -521,8 +519,9 @@ img {
    SECTIONS GENERAL
    ═══════════════════════════════════════════════════ */
 .section {
-  padding: 7rem 0;
+  padding: 2rem 0 7rem;
   position: relative;
+  scroll-margin-top: 55px;
 }
 
 .section-title {
@@ -793,9 +792,10 @@ img {
    SPACE SECTION
    ═══════════════════════════════════════════════════ */
 .space-section {
-  padding: 7rem 0;
+  padding: 2rem 0 7rem;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 55px;
 }
 
 .star-field {

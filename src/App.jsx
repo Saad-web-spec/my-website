@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import AOS from 'aos';
 import './index.css';
 
 /* ═══════════════════════════════════════════════════
@@ -274,9 +275,7 @@ function App() {
 
   // Initialize AOS (Animate On Scroll)
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({ duration: 800, once: true });
-    }
+    AOS.init({ duration: 800, once: true });
   }, []);
 
   // Navbar scroll effect
@@ -304,7 +303,10 @@ function App() {
     e.preventDefault();
     setMobileOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (!el) return;
+    const navbarHeight = 60;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
   };
 
   /* ─── Contact form handlers ─── */
@@ -369,7 +371,7 @@ function App() {
       <div className="ambient-mesh" />
 
       {/* ─── Navbar ─── */}
-      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      <nav role="navigation" aria-label="Main navigation" className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-container">
           <a href="#hero" className="nav-logo" onClick={e => handleNavClick(e, '#hero')}>
             <img src="/logo.svg" alt="SAAD" />
@@ -404,6 +406,9 @@ function App() {
           ))}
         </div>
       </nav>
+
+      {/* ─── Main Content ─── */}
+      <main id="main-content">
 
       {/* ─── Hero Section ─── */}
       <section className="hero" id="hero">
@@ -443,7 +448,7 @@ function App() {
           <div className="hero-image-wrapper hero-load hero-load-delay-3">
             <div className="breathing-glow" />
             <div className="hero-image-border">
-              <img src="/Profile.jpeg" alt="M.Saad (Saad Engineer / Engineer Saad) - Chemical Engineer & AI Researcher" className="hero-image" />
+              <img src="/Profile.jpeg" alt="M.Saad (Saad Engineer / Engineer Saad) - Chemical Engineer & AI Researcher" className="hero-image" width="340" height="340" fetchpriority="high" />
             </div>
           </div>
         </div>
@@ -480,6 +485,30 @@ function App() {
       </section>
 
 
+
+      {/* ─── Space Section ─── */}
+      <section className="space-section" id="space" aria-labelledby="space-heading">
+        <StarField />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="space-card" data-aos="fade-up">
+            <div className="space-icon" aria-hidden="true">🚀</div>
+            <h2 id="space-heading">Towards The Cosmos</h2>
+            <p>
+              Space science captivates me as much as chemical engineering. From propulsion chemistry
+              to life support systems and extraterrestrial habitats — the intersection of ChemE and
+              space exploration is where I believe humanity's future lies.
+            </p>
+            <a
+              href="https://whatsapp.com/channel/0029Vb6Oa7eJkK7DfyFc7E3Z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Explore the Cosmos →
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ─── Projects Section ─── */}
       <section className="section" id="projects">
@@ -683,6 +712,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* ─── Footer ─── */}
       <footer className="footer">

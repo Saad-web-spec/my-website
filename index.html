@@ -3,12 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- AOS (Animate On Scroll) Library -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
 
   <!-- Primary SEO Meta Tags -->
   <title>M.Saad</title>
@@ -21,7 +20,14 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
   <meta name="theme-color" content="#030303" />
-  <link rel="canonical" href="https://saadengineer.works" />
+  <link rel="canonical" href="https://saadengineer.works/" />
+
+  <!-- Internationalisation -->
+  <link rel="alternate" hreflang="en" href="https://saadengineer.works/" />
+  <link rel="alternate" hreflang="x-default" href="https://saadengineer.works/" />
+
+  <!-- Google Search Console verification — replace XXXXXX with your code -->
+  <!-- <meta name="google-site-verification" content="XXXXXX" /> -->
 
   <!-- Open Graph / Facebook -->
   <meta property="og:site_name" content="saadengineer.works" />
@@ -45,28 +51,48 @@
   <meta name="twitter:description"
     content="Muhammad Saad (Engineer Saad) — integrating AI with Chemical Engineering. Creator of fine-tuned AI models on Hugging Face." />
   <meta name="twitter:image" content="https://saadengineer.works/Profile.jpeg" />
+  <meta name="twitter:image:width" content="512" />
+  <meta name="twitter:image:height" content="512" />
   <meta name="twitter:image:alt" content="M.Saad (Engineer Saad) — Chemical Engineer and AI Researcher" />
 
-  <!-- JSON-LD Structured Data (Person Schema) -->
+  <!-- Resource hints for external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://formspree.io" />
+  <link rel="dns-prefetch" href="https://huggingface.co" />
+
+  <!-- Async Google Fonts (non-render-blocking) -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" />
+  </noscript>
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/Profile.jpeg" fetchpriority="high" />
+
+  <!-- JSON-LD: Person Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Muhammad Saad",
-    "alternateName": [
-      "M.Saad",
-      "Engineer Saad",
-      "Saad Engineer",
-      "Saad"
-    ],
+    "alternateName": ["M.Saad", "Engineer Saad", "Saad Engineer", "Saad"],
     "url": "https://saadengineer.works",
-    "image": "https://saadengineer.works/Profile.jpeg",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://saadengineer.works/Profile.jpeg",
+      "width": 512,
+      "height": 512,
+      "caption": "Muhammad Saad (Engineer Saad) — Chemical Engineer and AI Researcher"
+    },
     "description": "B.Sc Chemical Engineering Student integrating AI with process engineering. Known professionally as Engineer Saad (Saad Engineer), creating custom fine-tuned AI models on Hugging Face.",
     "email": "maliksaad2443@gmail.com",
-    "jobTitle": [
-      "Chemical Engineering Student",
-      "AI Researcher"
-    ],
+    "jobTitle": ["Chemical Engineering Student", "AI Researcher"],
     "knowsAbout": [
       "Chemical Engineering",
       "Artificial Intelligence",
@@ -89,47 +115,76 @@
   }
   </script>
 
-  <!-- JSON-LD Structured Data (WebSite Schema for Sitelinks) -->
+  <!-- JSON-LD: WebSite Schema (enables Sitelinks search box) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "saadengineer.works",
-    "alternateName": [
-      "M.Saad Portfolio",
-      "Engineer Saad Portfolio",
-      "Saad Engineer Portfolio"
-    ],
+    "alternateName": ["M.Saad Portfolio", "Engineer Saad Portfolio", "Saad Engineer Portfolio"],
     "url": "https://saadengineer.works",
     "description": "Personal portfolio of Muhammad Saad (Engineer Saad / Saad Engineer) — Chemical Engineering, AI, Space Sciences, and Community Building."
   }
   </script>
 
-  <!-- JSON-LD Structured Data (ProfilePage for Google Knowledge Panel) -->
+  <!-- JSON-LD: ProfilePage (Google Knowledge Panel) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
+    "dateCreated": "2025-01-01",
+    "dateModified": "2026-05-24",
     "mainEntity": {
       "@type": "Person",
       "name": "Muhammad Saad",
-      "alternateName": [
-        "M.Saad",
-        "Engineer Saad",
-        "Saad Engineer",
-        "Saad"
-      ],
+      "alternateName": ["M.Saad", "Engineer Saad", "Saad Engineer", "Saad"],
       "url": "https://saadengineer.works",
       "image": "https://saadengineer.works/Profile.jpeg",
       "description": "Chemical Engineering student focused on AI integration, fine-tuned model deployment, and space sciences. Known professionally as Saad Engineer (Engineer Saad)."
     }
   }
   </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",        "item": "https://saadengineer.works/" },
+      { "@type": "ListItem", "position": 2, "name": "About",       "item": "https://saadengineer.works/#about" },
+      { "@type": "ListItem", "position": 3, "name": "Projects",    "item": "https://saadengineer.works/#projects" },
+      { "@type": "ListItem", "position": 4, "name": "Space",       "item": "https://saadengineer.works/#space" },
+      { "@type": "ListItem", "position": 5, "name": "Communities", "item": "https://saadengineer.works/#communities" },
+      { "@type": "ListItem", "position": 6, "name": "Contact",     "item": "https://saadengineer.works/#contact" }
+    ]
+  }
+  </script>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Skip to main content (accessibility + SEO) -->
+  <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:fixed;top:0;left:0;width:auto;height:auto;padding:0.5rem 1rem;background:#3b82f6;color:#fff;z-index:9999;border-radius:0 0 8px 0;font-family:inherit;font-size:1rem;'">
+    Skip to main content
+  </a>
+
+  <div id="root">
+    <!-- noscript fallback for crawlers / users without JS -->
+    <noscript>
+      <main style="font-family:sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#f0f0f5;background:#030303;min-height:100vh;">
+        <h1>M.Saad — Chemical Engineer &amp; AI Researcher</h1>
+        <p>Muhammad Saad (Engineer Saad) is a B.Sc Chemical Engineering student integrating Artificial Intelligence with process engineering. Creator of fine-tuned AI models on Hugging Face, space science enthusiast, and founder of 500+ member engineering communities.</p>
+        <h2>Projects</h2>
+        <p>Fine-tuned AI models on <a href="https://huggingface.co/ali12345672344">Hugging Face</a> — bridging chemical engineering with modern AI.</p>
+        <h2>Communities</h2>
+        <p>Engineering Community &amp; Towards The Cosmos — WhatsApp groups for chemical engineering students and space enthusiasts.</p>
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:maliksaad2443@gmail.com">maliksaad2443@gmail.com</a></p>
+        <p>Please enable JavaScript to view the full interactive experience.</p>
+      </main>
+    </noscript>
+  </div>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
