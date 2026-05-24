@@ -361,6 +361,20 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+.hero-desktop-view {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+}
+
+.hero-mobile-view {
+  display: none;
+  width: 100%;
 }
 
 .hero-content {
@@ -1655,6 +1669,16 @@ img {
    RESPONSIVE
    ═══════════════════════════════════════════════════ */
 @media (max-width: 900px) {
+  .hero-desktop-view {
+    display: none;
+  }
+
+  .hero-mobile-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hero-content {
     width: 100%;
   }
