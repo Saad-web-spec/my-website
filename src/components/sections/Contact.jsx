@@ -83,8 +83,8 @@ export const Contact = () => {
         <div className="section-divider reveal" data-aos="fade-up" />
 
         <div className="contact-wrapper">
-          {/* Contact Form wrapped in TiltCard */}
-          <TiltCard className="contact-form-card reveal" data-aos="fade-up" maxRotation={8} scale={1.01}>
+          {/* Contact Form wrapped in static glass-card to prevent 3D transform click interference */}
+          <div className="glass-card contact-form-card reveal" data-aos="fade-up">
             <h3 className="contact-form-heading">Send Me a Message</h3>
             <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
               <div className="form-group">
@@ -159,10 +159,10 @@ export const Contact = () => {
                 <p className="form-status-success">Thanks! I'll get back to you soon.</p>
               )}
             </form>
-          </TiltCard>
+          </div>
 
-          {/* Contact Info Card wrapped in TiltCard */}
-          <TiltCard className="contact-card reveal" data-aos="fade-up" data-aos-delay="150" maxRotation={8} scale={1.01}>
+          {/* Contact Info Card wrapped in static glass-card to prevent click interference */}
+          <div className="glass-card contact-card reveal" data-aos="fade-up" data-aos-delay="150">
             <div className="contact-label">Email</div>
             <div className="email-row">
               <span className="email-address">maliksaad2443@gmail.com</span>
@@ -219,7 +219,7 @@ export const Contact = () => {
                 <InstagramIcon />
               </a>
             </div>
-          </TiltCard>
+          </div>
         </div>
       </div>
     </section>
