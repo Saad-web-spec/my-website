@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 
 // Import constants
@@ -195,6 +196,9 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
