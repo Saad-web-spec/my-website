@@ -15,7 +15,6 @@ export const Starfield = () => {
     const numStars = 180;
     
     // Mouse offset tracking
-    const mouse = { x: 0, y: 0 };
     const targetOffset = { x: 0, y: 0 };
     const currentOffset = { x: 0, y: 0 };
 

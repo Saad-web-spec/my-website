@@ -7,7 +7,7 @@ import './index.css';
 import { NAV_LINKS } from './data/constants';
 
 // Import icons
-import { IconMap } from './components/Icons';
+import { IconMap } from './components/iconMap';
 
 // Import UI elements
 import { Starfield } from './components/ui/Starfield';
@@ -165,7 +165,7 @@ function App() {
         <Hero handleNavClick={handleNavClick} />
         <AboutTimeline />
         <Projects />
-        <Communities handleNavClick={handleNavClick} />
+        <Communities />
         <Contact />
       </main>
 

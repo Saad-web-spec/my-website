@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROJECTS } from '../../data/constants';
-import { IconMap } from '../Icons';
+import { IconMap } from '../iconMap';
 import { TiltCard } from '../ui/TiltCard';
 
 export const Projects = () => {

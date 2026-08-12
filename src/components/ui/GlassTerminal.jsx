@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
+const COMMAND = 'starboy@system:~$ init_agents --mode=vibe';
+const REST_LINES = [
+  '[OK] Core logic loaded.',
+  '[OK] Connecting to Hugging Face...',
+  'System Online. Ready to build.'
+];
+
 export const GlassTerminal = () => {
   const [terminalLines, setTerminalLines] = useState([]);
   const [currentLineIdx, setCurrentLineIdx] = useState(0);
   const [typedCommand, setTypedCommand] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
-  const command = 'starboy@system:~$ init_agents --mode=vibe';
-  const restLines = [
-    '[OK] Core logic loaded.',
-    '[OK] Connecting to Hugging Face...',
-    'System Online. Ready to build.'
-  ];
-
   useEffect(() => {
     if (currentLineIdx === 0) {
       let charIdx = 0;
       const interval = setInterval(() => {
-        if (charIdx < command.length) {
-          setTypedCommand((prev) => prev + command[charIdx]);
+        if (charIdx < COMMAND.length) {
+          setTypedCommand((prev) => prev + COMMAND[charIdx]);
           charIdx++;
         }
-        if (charIdx === command.length) {
+        if (charIdx === COMMAND.length) {
           clearInterval(interval);
           setTimeout(() => {
-            setTerminalLines([`> ${command}`]);
+            setTerminalLines([`> ${COMMAND}`]);
             setCurrentLineIdx(1);
           }, 600);
         }
@@ -32,19 +32,19 @@ export const GlassTerminal = () => {
       return () => clearInterval(interval);
     } else if (currentLineIdx === 1) {
       const timer = setTimeout(() => {
-        setTerminalLines((prev) => [...prev, `> ${restLines[0]}`]);
+        setTerminalLines((prev) => [...prev, `> ${REST_LINES[0]}`]);
         setCurrentLineIdx(2);
       }, 400);
       return () => clearTimeout(timer);
     } else if (currentLineIdx === 2) {
       const timer = setTimeout(() => {
-        setTerminalLines((prev) => [...prev, `> ${restLines[1]}`]);
+        setTerminalLines((prev) => [...prev, `> ${REST_LINES[1]}`]);
         setCurrentLineIdx(3);
       }, 700);
       return () => clearTimeout(timer);
     } else if (currentLineIdx === 3) {
       const timer = setTimeout(() => {
-        setTerminalLines((prev) => [...prev, `> ${restLines[2]}`]);
+        setTerminalLines((prev) => [...prev, `> ${REST_LINES[2]}`]);
         setIsComplete(true);
       }, 500);
       return () => clearTimeout(timer);

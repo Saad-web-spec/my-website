@@ -57,18 +57,3 @@ export const SendIcon = (props) => (
     <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
   </svg>
 );
-
-export const IconMap = {
-  WhatsApp: WhatsAppIcon,
-  Facebook: FacebookIcon,
-  X: XIcon,
-  Instagram: InstagramIcon,
-  GitHub: GitHubIcon,
-  HuggingFace: HuggingFaceIcon,
-  Beaker: BeakerIcon,
-  Brain: BrainIcon,
-  Send: SendIcon,
-  Copy: CopyIcon,
-  Check: CheckIcon,
-  ArrowUp: ArrowUpIcon,
-};

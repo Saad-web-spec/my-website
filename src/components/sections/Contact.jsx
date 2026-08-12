@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { IconMap } from '../Icons';
+import { IconMap } from '../iconMap';
 import { TiltCard } from '../ui/TiltCard';
 
 export const Contact = () => {

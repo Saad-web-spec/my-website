@@ -1,9 +1,9 @@
 import React from 'react';
 import { COMMUNITY_GROUPS, SOCIAL_LINKS } from '../../data/constants';
-import { IconMap } from '../Icons';
+import { IconMap } from '../iconMap';
 import { TiltCard } from '../ui/TiltCard';
 
-export const Communities = ({ handleNavClick }) => {
+export const Communities = () => {
   const WhatsAppIcon = IconMap['WhatsApp'];
 
   return (
