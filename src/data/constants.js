@@ -4,7 +4,7 @@ export const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Space', href: '#space' },
   { label: 'Communities', href: '#communities' },
-  { label: 'Socials', href: '#socials' },
+  { label: 'Connect', href: '#socials' },
   { label: 'Contact', href: '#contact' },
 ];
 
