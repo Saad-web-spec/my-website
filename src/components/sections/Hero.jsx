@@ -3,6 +3,12 @@ import { Typewriter } from '../ui/Typewriter';
 import { TiltCard } from '../ui/TiltCard';
 
 export const Hero = ({ handleNavClick }) => {
+  const heroHighlights = [
+    'AI + Chemical Engineering Projects',
+    'Growing Student Communities',
+    'Weekly Learning Content',
+  ];
+
   return (
     <section className="hero" id="hero">
       <div className="container hero-container">
@@ -20,18 +26,23 @@ export const Hero = ({ handleNavClick }) => {
               <Typewriter
                 words={[
                   'Chemical Engineering Student.',
-                  'AI Explorer.',
-                  'Space Enthusiast.',
+                  'AI Builder.',
+                  'Space-Tech Enthusiast.',
                   'Community Builder.',
                 ]}
               />
             </div>
 
             <p className="hero-description hero-load hero-load-delay-3">
-              A B.Sc Chemical Engineering student exploring the intersection of process systems, 
-              artificial intelligence, and space sciences. I focus on building collaborative student communities, 
-              sharing curated academic resources, and exploring open-source AI models.
+              I build practical AI experiences for engineering learners and share open, community-first resources.
+              Follow my projects, join the learning network, and explore the future of Chemical Engineering × AI.
             </p>
+
+            <div className="hero-highlights hero-load hero-load-delay-3">
+              {heroHighlights.map((highlight) => (
+                <span key={highlight} className="hero-highlight-chip">{highlight}</span>
+              ))}
+            </div>
 
             <div className="cta-group hero-load hero-load-delay-4">
               <a
@@ -47,6 +58,14 @@ export const Hero = ({ handleNavClick }) => {
                 onClick={(e) => handleNavClick(e, '#about')}
               >
                 Learn More
+              </a>
+              <a
+                href="https://github.com/Saad-web-spec/my-website"
+                className="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Star on GitHub
               </a>
             </div>
           </div>
@@ -151,18 +170,23 @@ export const Hero = ({ handleNavClick }) => {
               <Typewriter
                 words={[
                   'Chemical Engineering Student.',
-                  'AI Explorer.',
-                  'Space Enthusiast.',
+                  'AI Builder.',
+                  'Space-Tech Enthusiast.',
                   'Community Builder.',
                 ]}
               />
             </div>
 
             <p className="hero-description hero-load hero-load-delay-3" style={{ margin: '0 auto 2.5rem' }}>
-              A B.Sc Chemical Engineering student exploring the intersection of process systems, 
-              artificial intelligence, and space sciences. I focus on building collaborative student communities, 
-              sharing curated academic resources, and exploring open-source AI models.
+              I build practical AI experiences for engineering learners and share open, community-first resources.
+              Follow my projects, join the learning network, and explore the future of Chemical Engineering × AI.
             </p>
+
+            <div className="hero-highlights hero-load hero-load-delay-3">
+              {heroHighlights.map((highlight) => (
+                <span key={highlight} className="hero-highlight-chip">{highlight}</span>
+              ))}
+            </div>
 
             <div className="cta-group hero-load hero-load-delay-4" style={{ justifyContent: 'center' }}>
               <a
@@ -178,6 +202,14 @@ export const Hero = ({ handleNavClick }) => {
                 onClick={(e) => handleNavClick(e, '#about')}
               >
                 Learn More
+              </a>
+              <a
+                href="https://github.com/Saad-web-spec/my-website"
+                className="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Star on GitHub
               </a>
             </div>
           </div>

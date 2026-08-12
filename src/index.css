@@ -436,6 +436,25 @@ img {
   font-weight: 300;
 }
 
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+
+.hero-highlight-chip {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border-hover);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
 /* Buttons */
 .cta-group {
   display: flex;
@@ -1695,6 +1714,11 @@ img {
     margin: 0 auto 2.5rem;
   }
 
+  .hero-highlights {
+    justify-content: center;
+    margin: 0 auto 2rem;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1757,6 +1781,10 @@ img {
     font-size: 0.95rem !important;
     line-height: 1.65 !important;
     margin: 0 auto 1.5rem !important;
+  }
+
+  .hero-highlight-chip {
+    font-size: 0.76rem;
   }
 
   .cta-group {
