@@ -1,16 +1,78 @@
-# React + Vite
+# M.Saad — Engineering × AI × Space Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio and community hub built with React + Vite to showcase:
+- Chemical engineering journey
+- Open-source AI exploration
+- Space-science passion
+- Student community initiatives
 
-Currently, two official plugins are available:
+🌐 **Live site:** [msaaddev.tech](https://msaaddev.tech)  
+⭐ **Like the project?** Please star this repo: [Saad-web-spec/my-website](https://github.com/Saad-web-spec/my-website)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Why this project exists
 
-## React Compiler
+This website is designed as a high-clarity personal brand presence with a focus on:
+- meaningful storytelling (timeline format),
+- actionable community links,
+- and smooth, animated user experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Interactive hero section with animated typewriter roles
+- 3D tilt cards for projects, communities, and socials
+- Scroll-based reveal animations (AOS + IntersectionObserver)
+- Dedicated sections: About, Projects, Space, Communities, Socials, Contact
+- Contact form integration (Formspree)
+- Responsive mobile menu and polished glassmorphism UI
+- SEO basics included (`robots.txt`, `sitemap.xml`, favicon, custom domain)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+- React 19
+- Vite 7
+- AOS (Animate On Scroll)
+- ESLint 9
+- Vercel Analytics
+
+## Getting started
+
+### 1) Install dependencies
+```bash
+npm install
+```
+
+### 2) Run locally
+```bash
+npm run dev
+```
+
+### 3) Build for production
+```bash
+npm run build
+```
+
+### 4) Preview production build
+```bash
+npm run preview
+```
+
+## Project structure
+
+```text
+src/
+  components/
+    sections/   # Page sections (Hero, Projects, Contact, etc.)
+    ui/         # Reusable UI effects (TiltCard, Starfield, Typewriter)
+  data/         # Navigation, projects, communities, social links
+  hooks/        # Custom hooks (e.g., 3D tilt)
+```
+
+## Contributing
+
+Issues and suggestions are welcome. If you have ideas to improve UX, performance, or accessibility:
+1. Open an issue
+2. Fork the repo
+3. Create a feature branch
+4. Submit a pull request
+
+If this project helped or inspired you, leaving a ⭐ is the best support.

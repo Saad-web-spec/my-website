@@ -31,6 +31,14 @@ export const COMMUNITY_GROUPS = [
 
 export const SOCIAL_LINKS = [
   {
+    href: 'https://github.com/Saad-web-spec',
+    icon: 'GitHub',
+    title: 'GitHub',
+    desc: 'Explore my repositories, open-source experiments, and project updates. If you like this portfolio, please star the repo.',
+    linkText: 'View GitHub →',
+    glowClass: 'x-glow',
+  },
+  {
     href: 'https://www.facebook.com/share/189N5ahB5J/',
     icon: 'Facebook',
     title: 'Facebook Page',

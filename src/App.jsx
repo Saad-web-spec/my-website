@@ -189,7 +189,16 @@ function App() {
           </div>
 
           <div className="footer-bottom">
-            <p>© 2026 M.Saad. Built with passion for the community.</p>
+            <p>
+              © 2026 M.Saad. Built with passion for the community.{' '}
+              <a
+                href="https://github.com/Saad-web-spec/my-website"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ⭐ Star this repo
+              </a>
+            </p>
             <button className="back-to-top" onClick={scrollToTop}>
               <ArrowUpIcon /> Back to top
             </button>
