@@ -6,7 +6,7 @@ A modern personal portfolio and community hub built with React + Vite to showcas
 - Space-science passion
 - Student community initiatives
 
-🌐 **Live site:** [msaaddev.tech](https://msaaddev.tech)  
+🌐 **Live site:** [www.saadengineer.works]
 ⭐ **Like the project?** Please star this repo: [Saad-web-spec/my-website](https://github.com/Saad-web-spec/my-website)
 
 ## Why this project exists
