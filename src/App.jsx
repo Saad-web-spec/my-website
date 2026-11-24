@@ -61,15 +61,17 @@ function App() {
           <div className="profile">
             <a href="#contact" className="card-link" aria-label="Say hello: go to the contact section">
               <div className="card">
-                <img
-                  src="/saad.webp"
-                  srcSet="/saad-800.webp 800w, /saad.webp 1600w"
-                  sizes="(max-width: 900px) 92vw, 720px"
-                  width="1600"
-                  height="1200"
-                  alt="Ink drawing of Muhammad Saad in a polo shirt."
-                  fetchPriority="high"
-                />
+                <span className="photo">
+                  <img
+                    src="/saad.webp"
+                    srcSet="/saad-800.webp 800w, /saad.webp 1600w"
+                    sizes="(max-width: 900px) 92vw, 720px"
+                    width="1600"
+                    height="1200"
+                    alt="Ink drawing of Muhammad Saad in a polo shirt."
+                    fetchPriority="high"
+                  />
+                </span>
               </div>
               <span className="bubble" aria-hidden="true">
                 <span className="bubble-text bubble-hi">
