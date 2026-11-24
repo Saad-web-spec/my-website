@@ -20,6 +20,30 @@ const SOCIAL_ICONS = {
 
 const external = { target: '_blank', rel: 'noopener noreferrer' };
 
+const ARROW_FLOURISH_MS = 420;
+
+// On touch screens there is no hover, so a tapped project plays a short
+// arrow animation first, then opens. Desktop clicks, modified clicks
+// (new tab, etc.) and reduced-motion visitors open straight away.
+function openProject(event) {
+  const touch = window.matchMedia('(hover: none)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!touch || reduced || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return;
+  }
+  event.preventDefault();
+  const link = event.currentTarget;
+  link.classList.remove('is-going');
+  void link.offsetWidth; // restart the animation if tapped twice quickly
+  link.classList.add('is-going');
+  setTimeout(() => {
+    const tab = window.open(link.href, '_blank');
+    if (tab) tab.opener = null;
+    else window.location.href = link.href; // pop-up blocked: open in place
+  }, ARROW_FLOURISH_MS);
+  setTimeout(() => link.classList.remove('is-going'), ARROW_FLOURISH_MS + 600);
+}
+
 function CopyEmail() {
   const [copied, setCopied] = useState(false);
 
@@ -117,7 +141,7 @@ function App() {
             <ul className="work-list">
               {PROJECTS.map((p, i) => (
                 <li key={p.title}>
-                  <a href={p.href} {...external}>
+                  <a href={p.href} {...external} onClick={openProject}>
                     <span className="work-no">{String(i + 1).padStart(2, '0')}</span>
                     <span className="work-name">{p.title}</span>
                     <span className="work-desc">{p.desc}</span>
