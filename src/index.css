@@ -489,10 +489,12 @@ button {
   }
 }
 
-/* Touch screens: as each project row scrolls into view, its arrow slides up
-   into the circle. Tied to the scroll, so it never moves on its own. */
+/* Phones and tablets: as each project row scrolls into view, its arrow slides
+   up into the circle. Tied to the scroll, so it never moves on its own.
+   Switched on by screen width, not (hover: none): Samsung phones wrongly
+   report hover support, which disabled this on them. */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (hover: none) {
+  @media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
     .work-go .icon {
       animation: arrow-in linear both;
       animation-timeline: view();
@@ -773,11 +775,12 @@ button {
   }
 }
 
-/* ─── Hover effects: mouse only ───
+/* ─── Hover effects: mouse on wide screens only ───
    On touch screens a tap leaves :hover "stuck" until you tap elsewhere, which
-   made the project buttons and card look broken. So every hover effect lives
-   here and only runs on devices with a real pointer. */
-@media (hover: hover) and (pointer: fine) {
+   made the project buttons and card look broken. Samsung phones also report
+   hover support even though they are touchscreens, so the width check keeps
+   these off every phone regardless of what the browser claims. */
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
   .top-nav > a:not(.top-link):hover {
     color: var(--ink);
   }
@@ -842,8 +845,8 @@ button {
   }
 }
 
-/* Touch screens never show the row highlight. */
-@media (hover: none) {
+/* Touch screens and phones never show the row highlight. */
+@media (hover: none), (max-width: 900px) {
   .work-list a::before {
     display: none;
   }

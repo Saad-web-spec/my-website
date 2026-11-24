@@ -22,13 +22,32 @@ const external = { target: '_blank', rel: 'noopener noreferrer' };
 
 const ARROW_FLOURISH_MS = 420;
 
-// On touch screens there is no hover, so a tapped project plays a short
-// arrow animation first, then opens. Desktop clicks, modified clicks
-// (new tab, etc.) and reduced-motion visitors open straight away.
+// What last touched the screen: 'touch', 'pen' or 'mouse'. Used instead of the
+// (hover: none) media query, which Samsung phones answer wrongly.
+let lastPointerType = 'mouse';
+window.addEventListener(
+  'pointerdown',
+  (event) => {
+    lastPointerType = event.pointerType || lastPointerType;
+  },
+  { capture: true, passive: true }
+);
+
+function isTouchTap(event) {
+  // In Chromium the click itself carries the pointer type ('' = keyboard).
+  const type = event.nativeEvent.pointerType;
+  const pointer = typeof type === 'string' ? type : lastPointerType;
+  if (pointer === 'touch' || pointer === 'pen') return true;
+  // Belt and braces for touchscreens that report themselves as a mouse.
+  return pointer === 'mouse' && navigator.maxTouchPoints > 0 && window.innerWidth <= 900;
+}
+
+// On phones a tapped project plays a short arrow animation first, then opens.
+// Desktop clicks, keyboard, modified clicks (new tab, etc.) and
+// reduced-motion visitors open straight away.
 function openProject(event) {
-  const touch = window.matchMedia('(hover: none)').matches;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!touch || reduced || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+  if (!isTouchTap(event) || reduced || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
     return;
   }
   event.preventDefault();

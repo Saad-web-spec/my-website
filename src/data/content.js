@@ -2,7 +2,7 @@
 
 export const SITE = {
   name: 'Muhammad Saad',
-  role: 'Chemical Engineering Student',
+  role: 'Engineering Undergrad',
   email: 'saad.tatakae@gmail.com',
   whatsapp: 'https://wa.me/message/SEUXWPS46POGF1?src=qr',
   intro:
