@@ -25,7 +25,7 @@ export const PROJECTS = [
   {
     title: 'sg-sem',
     desc: 'Fine-tuned gate-check model',
-    href: `${DSP}/graph/gate-check`,
+    href: 'https://huggingface.co/msaadv7/sg-sem-h4',
   },
 ];
 
@@ -33,5 +33,5 @@ export const SOCIALS = [
   { label: 'LinkedIn', icon: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-saad-0943103b7' },
   { label: 'X', icon: 'X', href: 'https://x.com/Cheme1569231' },
   { label: 'Facebook', icon: 'Facebook', href: 'https://www.facebook.com/share/189N5ahB5J/' },
-  { label: 'Hugging Face', icon: 'HuggingFace', href: 'https://huggingface.co/ali12345672344' },
+  { label: 'Hugging Face', icon: 'HuggingFace', href: 'https://huggingface.co/msaadv7' },
 ];
