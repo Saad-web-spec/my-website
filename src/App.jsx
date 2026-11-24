@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { PROJECTS, SITE, SOCIALS } from './data/content';
 import {
   ArrowUpRightIcon,
@@ -154,6 +155,9 @@ function App() {
           <a href="#top">Back to top ↑</a>
         </div>
       </footer>
+
+      {/* Vercel Web Analytics: page views only */}
+      <Analytics />
     </>
   );
 }
