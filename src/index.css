@@ -1,7 +1,8 @@
 /* Black and white, like the portrait. One font, plenty of air.
-   Light by default; a properly designed dark theme follows the visitor's
-   system setting. Declaring both schemes also stops phone browsers from
-   force-inverting the page on their own (which breaks the photo). */
+   Always light, whatever the visitor's system setting. `color-scheme: only
+   light` is the documented opt-out from phone browsers' automatic dark mode,
+   which otherwise inverts and dims the page (greying the photo). Colours are
+   kept as variables so a dark theme or toggle can be added later. */
 
 :root {
   --bg: #ffffff;
@@ -29,28 +30,7 @@
   --wrap: 1280px;
   --gutter: clamp(24px, 6vw, 72px);
 
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e0e10;
-    --ink: #f4f4f5;
-    --on-ink: #0e0e10;
-    --soft: #b4b4b8;
-    --muted: #84848a;
-    --line: #2a2a2e;
-    --surface: #18181b;
-    --hover-bg: #17171a;
-    --chip-hover: #202024;
-
-    --frame: #ececec;
-
-    --glow: rgba(255, 255, 255, 0.07);
-    --ring: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.3);
-    --drop: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
-    --drop-hover: 0 50px 90px -32px rgba(0, 0, 0, 0.95);
-  }
+  color-scheme: only light;
 }
 
 *,
@@ -163,20 +143,11 @@ button {
   transition: color 0.2s ease;
 }
 
-.top-nav > a:not(.top-link):hover {
-  color: var(--ink);
-}
-
 .top-link {
   padding: 0.55rem 1.15rem;
   border: 1px solid var(--ink);
   border-radius: 999px;
   transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.top-link:hover {
-  background: var(--ink);
-  color: var(--on-ink);
 }
 
 /* ─── Hero: the portrait leads ─── */
@@ -248,7 +219,6 @@ button {
   border-radius: 20px;
 }
 
-.card-link:hover .card,
 .card-link:focus-visible .card {
   transform: rotate(0deg) translateY(-4px);
   box-shadow: var(--ring), var(--drop-hover);
@@ -279,21 +249,8 @@ button {
   line-height: 1.2;
   /* A ring in the page colour cuts the bubble cleanly out of the card edge. */
   box-shadow: 0 0 0 3px var(--bg), 0 10px 24px -10px rgba(0, 0, 0, 0.45);
-  transform-origin: 18% 130%;
+  transform-origin: 50% 100%;
   pointer-events: none;
-}
-
-/* Little tail pointing down-left toward the face. */
-.bubble::after {
-  content: '';
-  position: absolute;
-  left: 20px;
-  bottom: -5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  background: var(--ink);
-  transform: rotate(45deg);
 }
 
 .bubble-text {
@@ -311,18 +268,12 @@ button {
   transform: translateY(6px);
 }
 
-.card-link:hover .bubble-hi,
-.card-link:focus-visible .bubble-hi {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-
+.card-link:focus-visible .bubble-hi,
 .card-link:active .bubble-hi {
   opacity: 0;
   transform: translateY(-6px);
 }
 
-.card-link:hover .bubble-go,
 .card-link:focus-visible .bubble-go,
 .card-link:active .bubble-go {
   opacity: 1;
@@ -357,10 +308,6 @@ button {
   border-radius: 999px;
   font-size: 1.25rem;
   transition: background-color 0.2s ease;
-}
-
-.socials a:hover {
-  background: var(--chip-hover);
 }
 
 .who {
@@ -401,10 +348,24 @@ button {
    each other and the page reads as calm, separate stops. */
 .work {
   padding-top: clamp(140px, 14vw, 220px);
+  padding-bottom: 3rem;
 }
 
+/* The "Projects" link lands on the heading, not on the empty space above it. */
+.anchor {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Contact fills a whole screen with its content centred. That way jumping to
+   it (from the photo or the Contact button) always lines up with the top of
+   the screen, instead of stopping early with the end of Projects showing. */
 .contact {
-  padding-block: clamp(160px, 16vw, 240px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: 5rem;
 }
 
 .work-list {
@@ -468,35 +429,29 @@ button {
   background: var(--surface);
   font-size: 1.15rem;
   color: var(--ink);
-  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease),
+    transform 0.2s var(--ease);
 }
 
 .work-go .icon {
   transition: transform 0.3s var(--ease);
 }
 
-.work-list a:hover::before,
+/* Keyboard focus and a quick touch press (both end as soon as you let go). */
 .work-list a:focus-visible::before {
   opacity: 1;
   transform: none;
 }
 
-.work-list a:hover .work-name {
-  transform: translateX(8px);
-}
-
-.work-list a:hover .work-desc {
-  color: var(--soft);
-}
-
-.work-list a:hover .work-go {
+.work-list a:focus-visible .work-go,
+.work-list a:active .work-go {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--on-ink);
 }
 
-.work-list a:hover .work-go .icon {
-  transform: rotate(45deg);
+.work-list a:active .work-go {
+  transform: scale(0.92);
 }
 
 /* ─── Contact ─── */
@@ -538,10 +493,6 @@ button {
   transition: border-color 0.2s ease;
 }
 
-.copy:hover {
-  border-color: var(--ink);
-}
-
 .contact-alt {
   margin-top: 1.1rem;
   color: var(--muted);
@@ -550,10 +501,6 @@ button {
 .contact-alt a {
   color: var(--ink);
   border-bottom: 1px solid var(--line);
-}
-
-.contact-alt a:hover {
-  border-color: var(--ink);
 }
 
 /* ─── Footer ─── */
@@ -571,10 +518,6 @@ button {
 
 .foot-row a {
   transition: color 0.2s ease;
-}
-
-.foot-row a:hover {
-  color: var(--ink);
 }
 
 /* ─── Skip link ─── */
@@ -757,7 +700,76 @@ button {
   }
 }
 
-/* Touch screens have no hover: keep project rows calm and static. */
+/* ─── Hover effects: mouse only ───
+   On touch screens a tap leaves :hover "stuck" until you tap elsewhere, which
+   made the project buttons and card look broken. So every hover effect lives
+   here and only runs on devices with a real pointer. */
+@media (hover: hover) and (pointer: fine) {
+  .top-nav > a:not(.top-link):hover {
+    color: var(--ink);
+  }
+
+  .top-link:hover {
+    background: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .card-link:hover .card {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: var(--ring), var(--drop-hover);
+  }
+
+  .card-link:hover .bubble-hi {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .card-link:hover .bubble-go {
+    opacity: 1;
+    transform: none;
+  }
+
+  .socials a:hover {
+    background: var(--chip-hover);
+  }
+
+  .work-list a:hover::before {
+    opacity: 1;
+    transform: none;
+  }
+
+  .work-list a:hover .work-name {
+    transform: translateX(8px);
+  }
+
+  .work-list a:hover .work-desc {
+    color: var(--soft);
+  }
+
+  .work-list a:hover .work-go {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .work-list a:hover .work-go .icon {
+    transform: rotate(45deg);
+  }
+
+  .copy:hover {
+    border-color: var(--ink);
+  }
+
+  .contact-alt a:hover {
+    border-color: var(--ink);
+  }
+
+  .foot-row a:hover {
+    color: var(--ink);
+  }
+}
+
+/* Touch screens never show the row highlight. */
 @media (hover: none) {
   .work-list a::before {
     display: none;
@@ -807,10 +819,6 @@ button {
   /* Stacked, the intro sits right above Projects: keep a wide pause. */
   .work {
     padding-top: clamp(180px, 30vw, 240px);
-  }
-
-  .contact {
-    padding-block: clamp(180px, 30vw, 240px);
   }
 
   .work-list a {
@@ -873,9 +881,15 @@ button {
   }
 }
 
-/* Tall phones have room for a bigger, square photo that fills the screen. */
-@media (max-width: 520px) and (min-height: 700px) {
+/* Phones and tablets (stacked layout): the photo is the hero of the first
+   screen. A portrait frame crops only the empty grey sides of the drawing, so
+   the person appears much larger; its height then grows to use whatever room
+   is left after the name and icons (about 220px with paddings), so there is no
+   dead space above or below. It never shrinks below 260px. */
+@media (max-width: 900px) {
   .card img {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 2 / 3;
+    max-height: max(260px, calc(100vh - var(--top-h) - 220px));
+    max-height: max(260px, calc(100svh - var(--top-h) - 220px));
   }
 }

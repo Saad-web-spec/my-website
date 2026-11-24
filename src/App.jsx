@@ -109,24 +109,26 @@ function App() {
           </div>
         </section>
 
-        <section className="work wrap reveal" id="projects" aria-labelledby="projects-title">
-          <h2 className="eyebrow" id="projects-title">
-            Projects
-          </h2>
-          <ul className="work-list">
-            {PROJECTS.map((p, i) => (
-              <li key={p.title}>
-                <a href={p.href} {...external}>
-                  <span className="work-no">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="work-name">{p.title}</span>
-                  <span className="work-desc">{p.desc}</span>
-                  <span className="work-go" aria-hidden="true">
-                    <ArrowUpRightIcon className="icon" />
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+        <section className="work wrap reveal" aria-labelledby="projects-title">
+          <div id="projects" className="anchor">
+            <h2 className="eyebrow" id="projects-title">
+              Projects
+            </h2>
+            <ul className="work-list">
+              {PROJECTS.map((p, i) => (
+                <li key={p.title}>
+                  <a href={p.href} {...external}>
+                    <span className="work-no">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="work-name">{p.title}</span>
+                    <span className="work-desc">{p.desc}</span>
+                    <span className="work-go" aria-hidden="true">
+                      <ArrowUpRightIcon className="icon" />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section className="contact wrap reveal" id="contact" aria-labelledby="contact-title">
