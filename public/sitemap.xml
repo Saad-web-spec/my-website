@@ -4,13 +4,13 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://saadengineer.works/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://saadengineer.works/Profile.jpeg</image:loc>
-      <image:title>Muhammad Saad (Engineer Saad) — Chemical Engineer and AI Researcher</image:title>
-      <image:caption>M.Saad, B.Sc Chemical Engineering student, AI model builder, and space science enthusiast</image:caption>
+      <image:title>Muhammad Saad</image:title>
+      <image:caption>Muhammad Saad, chemical engineering undergraduate</image:caption>
     </image:image>
   </url>
 </urlset>
