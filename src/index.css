@@ -375,6 +375,7 @@ button {
 
 .work-list a {
   position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.06);
   display: grid;
   grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1.2fr) auto;
   align-items: center;
@@ -437,21 +438,18 @@ button {
   transition: transform 0.3s var(--ease);
 }
 
-/* Keyboard focus and a quick touch press (both end as soon as you let go). */
+/* Keyboard focus only. There is deliberately no :active style: on a phone it
+   also fires when a finger lands on a row just to scroll, which made the
+   circles flash black. Touch gets the browser's own faint tap flash instead. */
 .work-list a:focus-visible::before {
   opacity: 1;
   transform: none;
 }
 
-.work-list a:focus-visible .work-go,
-.work-list a:active .work-go {
+.work-list a:focus-visible .work-go {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--on-ink);
-}
-
-.work-list a:active .work-go {
-  transform: scale(0.92);
 }
 
 /* ─── Contact ─── */
@@ -819,6 +817,9 @@ button {
   /* Stacked, the intro sits right above Projects: keep a wide pause. */
   .work {
     padding-top: clamp(180px, 30vw, 240px);
+    /* On touch the project list is simply there: no fade/slide-in while
+       scrolling, so the buttons never appear to move on their own. */
+    animation: none;
   }
 
   .work-list a {
